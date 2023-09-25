@@ -28,13 +28,23 @@ class FirebaseApiService {
     for (Map<String, dynamic> player in players) {
       playersList.add(PlayerModel.fromJson(player));
     }
-
+    //print(playersList);
+    CollectionReference playersCollection = _firestore.collection('players');
     for (var playerModel in playersList) {
       try {
-        await _firestore
-            .collection('players')
-            .add(playerModel.toJson())
-            .then((value) => print("Player Uploaded successfully"));
+        _firestore.runTransaction((transaction) async {
+          (Transaction tx) async {
+            var result = await playersCollection.add(playerModel.toJson());
+            print(result.get());
+          };
+        });
+
+        // await _firestore
+        //     .collection('players')
+        //     .doc()
+        //     .set(playerModel.toJson())
+        //     .onError((error, stackTrace) => print(error.toString()))
+        //     .then((value) => print("Player Uploaded successfully"));
       } catch (e) {
         print(e);
       }
