@@ -18,6 +18,7 @@ class NextMatchDataSources {
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
         nextMatchModel = NextMatchModel.fromMap(data);
+
         return nextMatchModel;
       }
     } catch (e) {

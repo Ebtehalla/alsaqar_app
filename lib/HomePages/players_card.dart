@@ -1,3 +1,4 @@
+import 'package:alsagr_app/data_sources/news_api.dart';
 import 'package:alsagr_app/data_sources/next_match_api.dart';
 import 'package:alsagr_app/models/next_match_model.dart';
 import 'package:alsagr_app/models/playerModel.dart';
@@ -36,8 +37,8 @@ class _PlayersCardState extends State<PlayersCard> {
                       itemCount: players?.length ?? 0,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () {
-                            print(players?[index]);
+                          onTap: () async {
+                            await getNews();
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
