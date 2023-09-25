@@ -51,7 +51,7 @@ class _MathsportState extends State<Mathsport> {
                     ),
                     width:
                         MediaQuery.of(context).size.width, // تغيير عرض الحاوية
-                    height: MediaQuery.of(context).size.width / 1.5,
+                    height: MediaQuery.of(context).size.height / 3.8,
                     child: Center(
                       child: Column(
                         children: [

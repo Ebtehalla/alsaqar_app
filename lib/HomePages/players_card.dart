@@ -90,25 +90,25 @@ class _PlayersCardState extends State<PlayersCard> {
                       },
                     ),
                   ),
-                  Row(
-                    children: [
-                      TextButton(
-                          onPressed: () async {
-                            // await NextMatchDataSources.addNextMatchToFirestore(
-                            //     NextMatchModel());
-                            // تودينه صفحه وتمررين اللسته عشان تعرضين الكل
-                            //مافهمت كيف
-                            // يلا نكمل شرح اجل ههههههههههههههههههههه
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         AllPlayers(playersList: playersList),
-                            //   ),
-                            // );
-                          },
-                          child: const Text('عرض المزيد')),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     TextButton(
+                  //         onPressed: () async {
+                  //           // await NextMatchDataSources.addNextMatchToFirestore(
+                  //           //     NextMatchModel());
+                  //           // تودينه صفحه وتمررين اللسته عشان تعرضين الكل
+                  //           //مافهمت كيف
+                  //           // يلا نكمل شرح اجل ههههههههههههههههههههه
+                  //           // Navigator.of(context).push(
+                  //           //   MaterialPageRoute(
+                  //           //     builder: (context) =>
+                  //           //         AllPlayers(playersList: playersList),
+                  //           //   ),
+                  //           // );
+                  //         },
+                  //         child: const Text('عرض المزيد')),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
