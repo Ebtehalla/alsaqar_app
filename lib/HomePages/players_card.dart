@@ -1,16 +1,14 @@
-import 'package:alsagr_app/HomePages/all_players.dart';
-import 'package:alsagr_app/News/hotel.dart';
 import 'package:alsagr_app/services/firebaseApi.dart';
 import 'package:flutter/material.dart';
 
-class playersCard extends StatefulWidget {
-  const playersCard({super.key});
+class PlayersCard extends StatefulWidget {
+  const PlayersCard({super.key});
 
   @override
-  State<playersCard> createState() => _playersCardState();
+  State<PlayersCard> createState() => _PlayersCardState();
 }
 
-class _playersCardState extends State<playersCard> {
+class _PlayersCardState extends State<PlayersCard> {
   /*
   لنتفرض ان هذي صفحة اللاعبين
   وعندنا لست من اللاعبين سواء اسمها وصور والخخ

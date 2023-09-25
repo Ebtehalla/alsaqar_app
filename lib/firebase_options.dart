@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,20 +43,39 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDsxjJdsox_BsN-3SErOzx3DI45nmHQwqc',
+    appId: '1:586901821142:web:a1543e0967ff66b1745b77',
+    messagingSenderId: '586901821142',
+    projectId: 'alsaqar-566d3',
+    authDomain: 'alsaqar-566d3.firebaseapp.com',
+    storageBucket: 'alsaqar-566d3.appspot.com',
+    measurementId: 'G-H6QB139GBE',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCjHX3KKNZ2-nCAB3BBdh4B0tKCMp9BB74',
-    appId: '1:792200913431:android:40da20aa89639f0d337252',
-    messagingSenderId: '792200913431',
-    projectId: 'alsaqer',
-    storageBucket: 'alsaqer.appspot.com',
+    apiKey: 'AIzaSyB_CcdI0d7tHIp47n0IIBIvwscwIKY3Ciw',
+    appId: '1:586901821142:android:6ed5f6d4293dac3a745b77',
+    messagingSenderId: '586901821142',
+    projectId: 'alsaqar-566d3',
+    storageBucket: 'alsaqar-566d3.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA0QrvAcmr4aiXzpdvvaUff-ZyoKz9Ol2M',
-    appId: '1:792200913431:ios:dc3fb597cadea0f5337252',
-    messagingSenderId: '792200913431',
-    projectId: 'alsaqer',
-    storageBucket: 'alsaqer.appspot.com',
+    apiKey: 'AIzaSyDTkLvqTMbqFwEQwa-tL29yC9FrNbvjXzk',
+    appId: '1:586901821142:ios:8027b65271a4284d745b77',
+    messagingSenderId: '586901821142',
+    projectId: 'alsaqar-566d3',
+    storageBucket: 'alsaqar-566d3.appspot.com',
     iosBundleId: 'com.example.alsagrApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDTkLvqTMbqFwEQwa-tL29yC9FrNbvjXzk',
+    appId: '1:586901821142:ios:5387df0324040e88745b77',
+    messagingSenderId: '586901821142',
+    projectId: 'alsaqar-566d3',
+    storageBucket: 'alsaqar-566d3.appspot.com',
+    iosBundleId: 'com.example.alsagrApp.RunnerTests',
   );
 }

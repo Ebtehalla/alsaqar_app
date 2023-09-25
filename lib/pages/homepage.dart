@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     'قائمة اللاعبين',
                     key: playersKey,
                   ),
-                  const playersCard(),
+                  const PlayersCard(),
                   Padding(
                     padding: const EdgeInsets.only(
                         bottom:
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     child: Center(
                       child: Container(
                         alignment: Alignment.centerRight,
-                        color: Color.fromARGB(255, 107, 67, 114),
+                        color: const Color.fromARGB(255, 107, 67, 114),
                         child: const Text(
                           'نادي الصقر السعودي @2023',
                           style: TextStyle(
