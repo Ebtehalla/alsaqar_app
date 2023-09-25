@@ -1,3 +1,5 @@
+import 'package:alsagr_app/data_sources/next_match_api.dart';
+import 'package:alsagr_app/models/next_match_model.dart';
 import 'package:alsagr_app/models/playerModel.dart';
 import 'package:alsagr_app/services/firebaseApi.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,8 +50,7 @@ class _PlayersCardState extends State<PlayersCard> {
                                   ClipRRect(
                                       borderRadius: BorderRadius.circular(12),
                                       child: Image.network(
-                                        players?[index].playerImage ??
-                                            "https://pngimg.com/d/football_player_PNG134.png",
+                                        players?[index].playerImage ?? "",
                                         errorBuilder:
                                             (context, error, stackTrace) =>
                                                 const Icon(Icons.face),
@@ -75,6 +76,11 @@ class _PlayersCardState extends State<PlayersCard> {
                                         fit: BoxFit.contain,
                                       )),
                                   Text(players?[index].playerPosition ?? ""),
+                                  Text((players?[index]
+                                              .playerNumber
+                                              .toString() ??
+                                          "")
+                                      .replaceAll("null", "")),
                                   Text(players?[index].playerName ?? ""),
                                 ],
                               ),
@@ -88,6 +94,8 @@ class _PlayersCardState extends State<PlayersCard> {
                     children: [
                       TextButton(
                           onPressed: () async {
+                            // await NextMatchDataSources.addNextMatchToFirestore(
+                            //     NextMatchModel());
                             // تودينه صفحه وتمررين اللسته عشان تعرضين الكل
                             //مافهمت كيف
                             // يلا نكمل شرح اجل ههههههههههههههههههههه

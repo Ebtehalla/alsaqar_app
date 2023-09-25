@@ -2,15 +2,15 @@
 import 'dart:convert';
 
 class NextMatchModel {
-  final int id;
-  final String? address;
-  final String? time;
+  final int? id;
+  final String? location;
+  final DateTime? time;
   final ClubModel? home;
   final ClubModel? away;
   final String? url;
   NextMatchModel({
-    required this.id,
-    this.address,
+    this.id,
+    this.location,
     this.time,
     this.home,
     this.away,
@@ -19,15 +19,15 @@ class NextMatchModel {
 
   NextMatchModel copyWith({
     int? id,
-    String? address,
-    String? time,
+    String? location,
+    DateTime? time,
     ClubModel? home,
     ClubModel? away,
     String? url,
   }) {
     return NextMatchModel(
       id: id ?? this.id,
-      address: address ?? this.address,
+      location: location ?? this.location,
       time: time ?? this.time,
       home: home ?? this.home,
       away: away ?? this.away,
@@ -38,8 +38,8 @@ class NextMatchModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'address': address,
-      'time': time,
+      'location': location,
+      'time': time?.millisecondsSinceEpoch,
       'home': home?.toMap(),
       'away': away?.toMap(),
       'url': url,
@@ -48,9 +48,11 @@ class NextMatchModel {
 
   factory NextMatchModel.fromMap(Map<String, dynamic> map) {
     return NextMatchModel(
-      id: map['id'] as int,
-      address: map['address'] != null ? map['address'] as String : null,
-      time: map['time'] != null ? map['time'] as String : null,
+      id: map['id'] != null ? map['id'] as int : null,
+      location: map['location'] != null ? map['location'] as String : null,
+      time: map['time'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['time'] as int)
+          : null,
       home: map['home'] != null
           ? ClubModel.fromMap(map['home'] as Map<String, dynamic>)
           : null,
@@ -68,7 +70,7 @@ class NextMatchModel {
 
   @override
   String toString() {
-    return 'NextMatchModel(id: $id, address: $address, time: $time, home: $home, away: $away, url: $url)';
+    return 'NextMatchModel(id: $id, location: $location, time: $time, home: $home, away: $away, url: $url)';
   }
 
   @override
@@ -76,7 +78,7 @@ class NextMatchModel {
     if (identical(this, other)) return true;
 
     return other.id == id &&
-        other.address == address &&
+        other.location == location &&
         other.time == time &&
         other.home == home &&
         other.away == away &&
@@ -86,7 +88,7 @@ class NextMatchModel {
   @override
   int get hashCode {
     return id.hashCode ^
-        address.hashCode ^
+        location.hashCode ^
         time.hashCode ^
         home.hashCode ^
         away.hashCode ^

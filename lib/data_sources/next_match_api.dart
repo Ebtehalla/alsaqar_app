@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:alsagr_app/models/next_match_model.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class NextMatchDataSources {
   static const String nextMatchCollection = "NextMatch";
@@ -26,16 +27,38 @@ class NextMatchDataSources {
     return nextMatchModel;
   }
 
-  static Future<void> addNextMatchToFirestore(NextMatchModel course) async {
-    try {
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
-      CollectionReference services = firestore.collection('NextMatch');
-      await firestore.runTransaction((transaction) async {
-        transaction.set(services.doc(), course.toMap());
-      });
-      BotToast.showText(text: 'Next Match added to Firestore successfully!');
-    } catch (e) {
-      log('Error adding Next Match to Firestore: $e');
-    }
-  }
+  // static Future<void> addNextMatchToFirestore(NextMatchModel course) async {
+  //   try {
+  //     course = NextMatchModel(
+  //         location: "استاد الملك فيصل",
+  //         url: "https://www.transfermarkt.com/zamalek-sc/startseite/verein/664",
+  //         away: ClubModel(
+  //             id: 1,
+  //             name: "Zamalek SC",
+  //             image:
+  //                 "https://tmssl.akamaized.net/images/wappen/head/664.png?lm=1415485832",
+  //             url:
+  //                 "https://tmssl.akamaized.net/images/wappen/head/664.png?lm=1415485832"),
+  //         home: ClubModel(
+  //             id: 2,
+  //             url: "https://alsaaqerclub.sa",
+  //             name: "نادي الصقر الرياضي ",
+  //             image:
+  //                 "https://alsaaqerclub.sa/wp-content/uploads/2023/09/WEEB20221-e1670246395930.png"),
+  //         id: 1,
+  //         time: DateTime.now().add(
+  //           const Duration(days: 3),
+  //         ));
+  //     FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //     DocumentReference services =
+  //         firestore.collection('NextMatch').doc("next_match");
+
+  //     await firestore.runTransaction((transaction) async {
+  //       transaction.set(services, course.toMap());
+  //     });
+  //     //BotToast.showText(text: 'Next Match added to Firestore successfully!');
+  //   } catch (e) {
+  //     log('Error adding Next Match to Firestore: $e');
+  //   }
+  // }
 }
