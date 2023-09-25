@@ -17,14 +17,14 @@ class _FootballState extends State<Football> {
       child: Column(
         children: [
           FutureBuilder(
-            future: FirebaseApi().readFromFirestore('news'),
+            future: FirebaseApiService().readFromFirestore('news'),
             builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else if (!snapshot.hasData || snapshot.data.isEmpty) {
-                return Text('No documents found in the collection.');
+                return const Text('No documents found in the collection.');
               } else {
                 final List<QueryDocumentSnapshot<Map<String, dynamic>>>
                     documentList = snapshot.data
@@ -46,7 +46,7 @@ class _FootballState extends State<Football> {
           const SizedBox(height: 18.0),
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 49, 140, 41),
+              color: const Color.fromARGB(255, 49, 140, 41),
               borderRadius: BorderRadius.circular(60),
               boxShadow: [
                 BoxShadow(

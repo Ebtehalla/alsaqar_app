@@ -17,7 +17,7 @@ class _AllPlayersState extends State<AllPlayers> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('اللاعبين'),
-        backgroundColor: Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -101,8 +101,8 @@ class _AllPlayersState extends State<AllPlayers> {
                                   }
                                 }),
                               ),
-                              Text(currentPlayer['POS']),
-                              Text(currentPlayer['Name']),
+                              Text(currentPlayer['POS'] ?? ""),
+                              Text(currentPlayer['Name'] ?? ""),
                             ],
                           ),
                         ),

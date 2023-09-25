@@ -1,4 +1,6 @@
 import 'package:alsagr_app/HomePages/all_players.dart';
+import 'package:alsagr_app/News/hotel.dart';
+import 'package:alsagr_app/services/firebaseApi.dart';
 import 'package:flutter/material.dart';
 
 class playersCard extends StatefulWidget {
@@ -219,8 +221,8 @@ class _playersCardState extends State<playersCard> {
                                 }
                               }),
                             ),
-                            Text(currentPlayer['POS']),
-                            Text(currentPlayer['Name']),
+                            Text(currentPlayer['POS'] ?? "ST"),
+                            Text(currentPlayer['Name'] ?? ""),
                           ],
                         ),
                       ),
@@ -232,19 +234,19 @@ class _playersCardState extends State<playersCard> {
             Row(
               children: [
                 TextButton(
-                    onPressed: () {
-                      print(playersList);
+                    onPressed: () async {
+                      await FirebaseApiService().addPlayersToFirebase();
                       // تودينه صفحه وتمررين اللسته عشان تعرضين الكل
                       //مافهمت كيف
                       // يلا نكمل شرح اجل ههههههههههههههههههههه
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              AllPlayers(playersList: playersList),
-                        ),
-                      );
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         AllPlayers(playersList: playersList),
+                      //   ),
+                      // );
                     },
-                    child: Text('عرض المزيد')),
+                    child: const Text('عرض المزيد')),
               ],
             ),
           ],
