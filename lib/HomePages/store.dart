@@ -11,7 +11,7 @@ class store extends StatefulWidget {
 
 class _storeState extends State<store> {
   void _openStore() async {
-    final url = 'https://storealsakr.panorama-g.com/';
+    const url = 'https://storealsakr.panorama-g.com/';
     if (await canLaunch(url)) {
       await launch(url);
     } else {

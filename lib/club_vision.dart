@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:alsagr_app/components/drawer.dart';
 
 class ClubVision extends StatefulWidget {
-  const ClubVision({Key? key});
+  const ClubVision({super.key});
 
   @override
   _ClubVisionState createState() => _ClubVisionState();
@@ -20,7 +20,7 @@ class _ClubVisionState extends State<ClubVision> {
             child: Image.asset('assets/Alsaaqerclub.jpg'),
           ),
         ],
-        backgroundColor: Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(

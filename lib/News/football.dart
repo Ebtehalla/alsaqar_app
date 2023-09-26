@@ -16,33 +16,33 @@ class _FootballState extends State<Football> {
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
         children: [
-          FutureBuilder(
-            future: FirebaseApiService().readFromFirestore('news'),
-            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else if (!snapshot.hasData || snapshot.data.isEmpty) {
-                return const Text('No documents found in the collection.');
-              } else {
-                final List<QueryDocumentSnapshot<Map<String, dynamic>>>
-                    documentList = snapshot.data
-                        as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
+          // FutureBuilder(
+          //   future: FirebaseApiService().readFromFirestore('news'),
+          //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return const CircularProgressIndicator();
+          //     } else if (snapshot.hasError) {
+          //       return Text('Error: ${snapshot.error}');
+          //     } else if (!snapshot.hasData || snapshot.data.isEmpty) {
+          //       return const Text('No documents found in the collection.');
+          //     } else {
+          //       final List<QueryDocumentSnapshot<Map<String, dynamic>>>
+          //           documentList = snapshot.data
+          //               as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
 
-                return Column(
-                  children: documentList.map((document) {
-                    return Column(
-                      children: [
-                        Text('Document ID: ${document.id}'),
-                        Text('Data: ${document.data()}'),
-                      ],
-                    );
-                  }).toList(),
-                );
-              }
-            },
-          ),
+          //       return Column(
+          //         children: documentList.map((document) {
+          //           return Column(
+          //             children: [
+          //               Text('Document ID: ${document.id}'),
+          //               Text('Data: ${document.data()}'),
+          //             ],
+          //           );
+          //         }).toList(),
+          //       );
+          //     }
+          //   },
+          // ),
           const SizedBox(height: 18.0),
           Container(
             decoration: BoxDecoration(
@@ -76,12 +76,6 @@ class _FootballState extends State<Football> {
             color: Colors.grey,
             indent: 50.0,
             endIndent: 50.0,
-          ),
-          const SizedBox(height: 10.0),
-          Image.asset(
-            'assets/نادي-الصقر-يبحث-فرص-الاستثمار-مع-وزارة-الرياضة.jpg',
-            width: 450,
-            height: 450,
           ),
         ],
       ),

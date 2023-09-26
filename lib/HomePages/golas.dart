@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:alsagr_app/components/drawer.dart';
 
+// ignore: camel_case_types
 class goalsclub extends StatefulWidget {
-  const goalsclub({Key? key});
+  const goalsclub({super.key});
 
   @override
   _goalsclubState createState() => _goalsclubState();
@@ -20,7 +21,7 @@ class _goalsclubState extends State<goalsclub> {
             child: Image.asset('assets/Alsaaqerclub.jpg'),
           ),
         ],
-        backgroundColor: Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -39,11 +40,11 @@ class _goalsclubState extends State<goalsclub> {
           borderRadius: BorderRadius.circular(10.0), // تعديل شكل حواف البوكس
           boxShadow: [
             BoxShadow(
-              color: Color.fromARGB(255, 119, 67, 98)
+              color: const Color.fromARGB(255, 119, 67, 98)
                   .withOpacity(0.5), // تعديل لون الظل
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // تعديل اتجاه الظل
+              offset: const Offset(0, 3), // تعديل اتجاه الظل
             ),
           ],
         ),
@@ -60,8 +61,7 @@ class _goalsclubState extends State<goalsclub> {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(255, 61, 122, 63),
-
+                        color: Color.fromARGB(255, 61, 122, 63),
                       ),
                     ),
                   ),

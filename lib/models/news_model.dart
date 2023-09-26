@@ -22,14 +22,14 @@ class NewsModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'imageURL': imageUrl,
+      'imageUrl': imageUrl,
     };
   }
 
   factory NewsModel.fromMap(Map<String, dynamic> map) {
     return NewsModel(
       title: map['title'] != null ? map['title'] as String : null,
-      imageUrl: map['imageURL'] != null ? map['imageURL'] as String : null,
+      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
     );
   }
 
