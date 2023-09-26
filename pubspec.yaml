@@ -1,10 +1,10 @@
 name: alsagr_app
 description: A new Flutter project.
-publish_to: 'none'
-version: 1.0.0+2
+publish_to: "none"
+version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
   bot_toast: ^4.1.3
@@ -27,7 +27,7 @@ dependencies:
 #     android:
 #       enable: true
 #     ios:
-#       enable: true 
+#       enable: true
 
 dev_dependencies:
   flutter_lints: ^2.0.0
