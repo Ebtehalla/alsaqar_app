@@ -36,7 +36,6 @@ class _planclubState extends State<planclub> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               color: Colors.green,
-              height: 500,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

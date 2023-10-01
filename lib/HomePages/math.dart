@@ -51,7 +51,6 @@ class _MathsportState extends State<Mathsport> {
                     ),
                     width:
                         MediaQuery.of(context).size.width, // تغيير عرض الحاوية
-                    height: MediaQuery.of(context).size.height / 3.8,
                     child: Center(
                       child: Column(
                         children: [
@@ -135,7 +134,7 @@ class _MathsportState extends State<Mathsport> {
                                     ],
                                   ),
                                   Text(
-                                      "${(match?.time?.day ?? 00).toString() ?? " "}/${(match?.time?.month ?? 00).toString() ?? " "}/${(match?.time?.year ?? 00).toString() ?? " "}")
+                                      "${(match?.time?.day ?? 00).toString()}/${(match?.time?.month ?? 00).toString() ?? " "}/${(match?.time?.year ?? 00).toString() ?? " "}")
                                 ],
                               ),
                               Column(

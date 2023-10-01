@@ -42,7 +42,6 @@ class _PlayersCardState extends State<PlayersCard> {
                                 borderRadius: BorderRadius.circular(12)),
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.3,
-                              height: 200,
                               child: Column(
                                 children: [
                                   ClipRRect(
