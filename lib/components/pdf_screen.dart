@@ -1,21 +1,31 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_null_comparison
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:developer';
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 
-import 'package:alsagr_app/components/drawer.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
-class Planclub extends StatefulWidget {
-  const Planclub({Key? key}) : super(key: key);
+import 'package:alsagr_app/components/drawer.dart';
+
+class PdfScreen extends StatefulWidget {
+  const PdfScreen({
+    Key? key,
+    required this.pdf,
+    required this.title,
+  }) : super(key: key);
+  final String pdf;
+  final String title;
 
   @override
-  State<Planclub> createState() => _PlanclubState();
+  _PdfScreenState createState() => _PdfScreenState();
 }
 
-class _PlanclubState extends State<Planclub> {
+class _PdfScreenState extends State<PdfScreen> {
   String urlPDFPath = "";
   bool exists = true;
   int _totalPages = 0;
@@ -43,14 +53,16 @@ class _PlanclubState extends State<Planclub> {
 
   @override
   void initState() {
-    getFileFromUrl(
-            "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/__%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9%20(1).pdf?alt=media&token=2eb2af27-f55a-4cc8-a37c-346f9fabc0c9&_gl=1*umcdke*_ga*MTA5MjI0NDU4LjE2Nzk5MDg4MzY.*_ga_CW55HF8NVT*MTY5NzA5OTc5Ny4xNTcuMS4xNjk3MDk5ODI1LjMyLjAuMA..")
-        .then(
+    getFileFromUrl(widget.pdf).then(
       (value) => {
         setState(() {
-          urlPDFPath = value.path;
-          loaded = true;
-          exists = true;
+          if (value != null) {
+            urlPDFPath = value.path;
+            loaded = true;
+            exists = true;
+          } else {
+            exists = false;
+          }
         })
       },
     );
@@ -63,7 +75,7 @@ class _PlanclubState extends State<Planclub> {
       return Scaffold(
         drawer: MyDrawer(),
         appBar: AppBar(
-          title: const Text(' هيكل الخطة الاستراتيجية'),
+          title: Text(widget.title),
           actions: [
             ClipOval(
               child: Image.asset('assets/Alsaaqerclub.jpg'),

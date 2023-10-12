@@ -1,6 +1,6 @@
 import 'package:alsagr_app/data_sources/news_api.dart';
 import 'package:alsagr_app/models/playerModel.dart';
-import 'package:alsagr_app/services/firebaseApi.dart';
+import 'package:alsagr_app/services/firebase_api.dart';
 import 'package:flutter/material.dart';
 
 class PlayersCard extends StatefulWidget {
