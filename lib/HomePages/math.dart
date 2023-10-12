@@ -134,7 +134,7 @@ class _MathsportState extends State<Mathsport> {
                                     ],
                                   ),
                                   Text(
-                                      "${(match?.time?.day ?? 00).toString()}/${(match?.time?.month ?? 00).toString() ?? " "}/${(match?.time?.year ?? 00).toString() ?? " "}")
+                                      "${(match?.time?.day ?? 00).toString()}/${(match?.time?.month ?? 00).toString() ?? " "}/${(match?.time?.year ?? 00).toString() ?? " "}  ${(match?.time?.hour ?? 00).toString() ?? " "}:${(match?.time?.minute ?? 00).toString() ?? " "}")
                                 ],
                               ),
                               Column(
