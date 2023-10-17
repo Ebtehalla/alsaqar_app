@@ -228,15 +228,3 @@ String generateRandomUsername() {
   return username;
 }
 
-void openGmailApp() async {
-  const url = "https://mail.google.com/mail/u/0/#inbox";
-
-  // Check if the Gmail app is installed
-  if (await canLaunchUrl(Uri.parse(url))) {
-    // Launch the Gmail app
-    await launchUrl(Uri.parse(url));
-  } else {
-    // Gmail app is not installed, handle the error
-    throw 'Gmail app is not installed.';
-  }
-}

@@ -89,64 +89,54 @@ class _MyDrawerState extends State<MyDrawer> {
                       EneftyIcons.home_outline,
                     ),
                     const SizedBox(height: 20),
-                    myListTile(
-                      context: context,
+                    const myListTile(
                       title: ' نبذة التاريخية ',
                       icon: EneftyIcons.information_outline,
-                      screenName: const roawaacl(),
+                      screenName: roawaacl(),
                     ),
                     const SizedBox(height: 20),
-                    myListTile(
-                      context: context,
+                    const myListTile(
                       title: 'الاخبار',
                       icon: EneftyIcons.book_2_outline,
-                      screenName: const NewsPage(),
+                      screenName: NewsPage(),
                     ),
                     const SizedBox(height: 20),
-                    myListTile(
-                      context: context,
+                    const myListTile(
                       title: 'جدول المباريات',
                       icon: Icons.sports_volleyball_outlined,
-                      screenName:
-                          const sportclander(), // بدلي الصفحات حقها بعدين
+                      screenName: sportclander(), // بدلي الصفحات حقها بعدين
                     ),
                     const SizedBox(height: 20),
                     myExpandedWidget(
                       context,
                       'الإستراتيجية',
                       [
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'رؤية النادي ورسالته',
                           icon: Icons.message_sharp,
-                          screenName:
-                              const ClubVision(), // بدلي الصفحات حقها بعدين
+                          screenName: ClubVision(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'الاهداف الإستراتيجية',
                           icon: Icons.grading_outlined,
-                          screenName:
-                              const Goalsclub(), // بدلي الصفحات حقها بعدين
+                          screenName: Goalsclub(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'وثيقة الخطة الإستراتيجية',
                           icon: Icons.format_list_bulleted,
-                          screenName: const PdfScreen(
+                          screenName: PdfScreen(
                             pdf:
                                 "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/__%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9%20(1).pdf?alt=media&token=2eb2af27-f55a-4cc8-a37c-346f9fabc0c9&_gl=1*14x7zam*_ga*MTA5MjI0NDU4LjE2Nzk5MDg4MzY.*_ga_CW55HF8NVT*MTY5NzA5OTc5Ny4xNTcuMS4xNjk3MDk5ODI1LjMyLjAuMA..",
                             title: 'وثيقة الخطة الإستراتيجية',
                           ),
                         ),
                         const SizedBox(height: 12),
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: "التقرير السنوي",
                           icon: Icons.format_list_bulleted,
-                          screenName: const PdfScreen(
+                          screenName: PdfScreen(
                             pdf: "https://alsaqerfc.sa/site/annulreport.pdf",
                             title: "التقرير السنوي",
                           ),
@@ -160,21 +150,18 @@ class _MyDrawerState extends State<MyDrawer> {
                       'الاستطلاعات',
                       [
                         myListTile(
-                          context: context,
                           title: 'استطلاع الجمهور',
                           icon: Icons.poll,
                           screenName: SurveyScreen(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
                         myListTile(
-                          context: context,
                           title: 'استطلاع الموظفين',
                           icon: Icons.group,
                           screenName: pageemplo(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
                         myListTile(
-                          context: context,
                           title: 'استطلاع الزوار',
                           icon: Icons.person_search_sharp,
                           screenName: pagevisit(), // بدلي الصفحات حقها بعدين
@@ -187,35 +174,28 @@ class _MyDrawerState extends State<MyDrawer> {
                       context,
                       'التواصل',
                       [
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'تواصل معنا',
                           icon: Icons.contactless_outlined,
-                          screenName:
-                              const ContactForm(), // بدلي الصفحات حقها بعدين
+                          screenName: ContactForm(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'التوظيف',
                           icon: Icons.people_alt,
-                          screenName:
-                              const emploeeykey(), // بدلي الصفحات حقها بعدين
+                          screenName: emploeeykey(), // بدلي الصفحات حقها بعدين
                         ),
                         const SizedBox(height: 12),
-                        myListTile(
-                          context: context,
+                        const myListTile(
                           title: 'البلاغات والشكاوي',
                           icon: Icons.event_note_outlined,
-                          screenName:
-                              const problem(), // بدلي الصفحات حقها بعدين
+                          screenName: problem(), // بدلي الصفحات حقها بعدين
                         ),
                       ],
                       EneftyIcons.message_circle_outline,
                     ),
                     const SizedBox(height: 20),
-                    myListTile(
-                      context: context,
+                    const myListTile(
                       title: 'المتجر',
                       icon: EneftyIcons.shop_outline,
                     ),
@@ -252,49 +232,54 @@ navigateToKey(BuildContext context, List<GlobalKey>? keys, int index) {
   }
 }
 
-Widget myListTile({
-  required BuildContext context,
-  required String title,
-  required IconData icon,
-  Widget? screenName,
-}) {
-  return GestureDetector(
-    onTap: () async {
-      String url = "https://store.alsaqerfc.sa";
-      screenName != null
-          ? Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => screenName,
-              ),
-              (route) => false,
-            )
-          : {
-              if (await canLaunchUrl(Uri.parse(url)))
-                {
-                  await launchUrl(Uri.parse(url)),
-                }
-              else
-                {throw 'Could not launch $url'},
-            };
-    },
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
+class myListTile extends StatelessWidget {
+  const myListTile(
+      {super.key, required this.title, required this.icon, this.screenName});
+  final String title;
+  final Widget? screenName;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        String url = "https://store.alsaqerfc.sa";
+        if (screenName != null) {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => screenName!,
+            ),
+            (route) => false,
+          );
+        } else {
+          try {
+            await launchUrl(
+              Uri.parse(url),
+              mode: LaunchMode.externalApplication,
+            );
+          } catch (e) {
+            print(e);
+          }
+        }
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(width: 4),
-        Icon(
-          icon,
-          color: Colors.black54,
-          size: 20,
-        ),
-      ],
-    ),
-  );
+          const SizedBox(width: 4),
+          Icon(
+            icon,
+            color: Colors.black54,
+            size: 20,
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 Widget myExpandedWidget(

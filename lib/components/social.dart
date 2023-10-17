@@ -8,7 +8,8 @@ class SocialMediaPage extends StatelessWidget {
   final String facebookUrl;
   final String instagramUrl;
 
-  const SocialMediaPage({super.key, 
+  const SocialMediaPage({
+    super.key,
     required this.imgUrl,
     required this.text,
     required this.whatsappUrl,
@@ -18,7 +19,10 @@ class SocialMediaPage extends StatelessWidget {
 
   void _launchURL(String url) async {
     if (await canLaunch(url)) {
-      await launch(url);
+      await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
     } else {
       throw 'Could not launch $url';
     }
