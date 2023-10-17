@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,22 +9,24 @@ class SocialMediaPage extends StatelessWidget {
   final String whatsappUrl;
   final String facebookUrl;
   final String instagramUrl;
+  final String snapchaUrl;
+  final String telegramUrl;
+  final String instaUrl;
 
-  const SocialMediaPage({
-    super.key,
-    required this.imgUrl,
-    required this.text,
-    required this.whatsappUrl,
-    required this.facebookUrl,
-    required this.instagramUrl,
-  });
+  const SocialMediaPage(
+      {super.key,
+      required this.imgUrl,
+      required this.text,
+      required this.whatsappUrl,
+      required this.facebookUrl,
+      required this.instagramUrl,
+      required this.snapchaUrl,
+      required this.telegramUrl,
+      required this.instaUrl});
 
   void _launchURL(String url) async {
     if (await canLaunch(url)) {
-      await launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      );
+      await launch(url);
     } else {
       throw 'Could not launch $url';
     }
@@ -58,8 +62,16 @@ class SocialMediaPage extends StatelessWidget {
               child: const Text('Facebook'),
             ),
             ElevatedButton(
-              onPressed: () => _launchURL(instagramUrl),
-              child: const Text('Instagram'),
+              onPressed: () => _launchURL(snapchaUrl),
+              child: const Text('Snapchat'),
+            ),
+            ElevatedButton(
+              onPressed: () => _launchURL(telegramUrl),
+              child: const Text('telegram'),
+            ),
+            ElevatedButton(
+              onPressed: () => _launchURL(instaUrl),
+              child: const Text('insta'),
             ),
           ],
         ),

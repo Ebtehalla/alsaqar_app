@@ -1,13 +1,10 @@
-import 'package:alsagr_app/components/network_image.dart';
-import 'package:alsagr_app/core/extensions/build_context.dart';
 import 'package:alsagr_app/data_sources/news_api.dart';
 import 'package:alsagr_app/models/news_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ImageHeadr extends StatefulWidget {
-  const ImageHeadr({super.key});
+  const ImageHeadr({Key? key}) : super(key: key);
 
   @override
   State<ImageHeadr> createState() => _ImageHeadrState();
@@ -16,20 +13,25 @@ class ImageHeadr extends StatefulWidget {
 class _ImageHeadrState extends State<ImageHeadr> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<DocumentSnapshot>>(
-      future: getData("news"),
+    return FutureBuilder<List<NewsModel>?>(
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          var news = snapshot.data as List<DocumentSnapshot>;
+          print(snapshot.data);
+          final news = snapshot.data;
           return CarouselSlider.builder(
-            itemCount: news.length,
+            itemCount: news?.length ?? 0,
             itemBuilder: (context, index, realIndex) {
-              var item = news[index].data() as Map<dynamic, dynamic>;
-              Map<String, dynamic> map = Map.from(item);
-              return AppCashedImage(
-                imageUrl: map["img"],
-                fit: BoxFit.cover,
-                width: context.width,
+              // ignore: unused_local_variable
+              String currentImage = news?[index].imageUrl ?? "";
+              return Image.network(
+                news?[index].imageUrl ?? "",
+                width: 900, // Set the desired width
+                height: 400, // Set the desired height
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.network(
+                      "https://alsaaqerclub.sa/wp-content/uploads/2022/12/-e1670162685443-128x128.png");
+                },
               );
             },
             options: CarouselOptions(
@@ -44,6 +46,7 @@ class _ImageHeadrState extends State<ImageHeadr> {
           );
         }
       },
+      future: getNews(),
     );
   }
 }

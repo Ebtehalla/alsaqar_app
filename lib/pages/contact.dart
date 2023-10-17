@@ -1,3 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:alsagr_app/components/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:alsagr_app/components/drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -10,13 +13,8 @@ class ContactForm extends StatefulWidget {
 
 class _ContactFormState extends State<ContactForm> {
   void _openSocialMedia(String url) async {
-    if (await canLaunchUrl(
-      Uri.parse(url),
-    )) {
-      await launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      );
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
       throw 'Could not launch $url';
     }
@@ -25,6 +23,7 @@ class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('التواصل'),
@@ -112,49 +111,14 @@ class _ContactFormState extends State<ContactForm> {
                 child: const Text('إرسال'),
               ),
               const SizedBox(height: 16),
-              const Text(
-                ' : تواصل معنا عبر ',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Image.asset('assets/new_twitter.png'),
-                    onPressed: () => _openSocialMedia(
-                        'https://twitter.com/ALSAQERFC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'),
-                  ),
-                  IconButton(
-                    icon: Image.asset(
-                        'assets/new-tiktok.png'), // استبدل بأيقونة سناب شات الخاصة بك
-                    onPressed: () =>
-                        _openSocialMedia('https://www.tiktok.com/@alsaqerfc'),
-                  ),
-                  IconButton(
-                    icon: Image.asset(
-                        'assets/whatsapp-icon.png'), // استبدل بأيقونة واتساب الخاصة بك
-                    onPressed: () => _openSocialMedia(
-                        'https://api.whatsapp.com/send?phone=966534141130'),
-                  ),
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.only(
                     bottom: 5.0), // Change the value to adjust the padding size
                 child: Center(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    color: const Color.fromARGB(255, 107, 67, 114),
-                    child: const Text(
-                      'نادي الصقر السعودي @2023',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 18.0,
-                      ),
-                    ),
+                    color: Color.fromARGB(255, 49, 134, 55), // تحديد لون النص ه
+                    child: const Footer(),
                   ),
                 ),
               ),

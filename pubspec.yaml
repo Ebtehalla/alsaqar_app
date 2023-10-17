@@ -1,7 +1,11 @@
 name: alsagr_app
 description: A new Flutter project.
 publish_to: "none"
+<<<<<<< HEAD
 version: 1.0.3+8
+=======
+version: 1.0.2+5
+>>>>>>> repo-a/main
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -11,6 +15,7 @@ dependencies:
   cached_network_image: ^3.3.0
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.9.1
+<<<<<<< HEAD
   connectivity_plus: ^5.0.0
   enefty_icons: ^1.0.5
   eva_icons_flutter: ^3.1.0
@@ -32,6 +37,23 @@ dependencies:
   timeago: ^3.5.0
   url_launcher: ^6.1.6
 
+=======
+  enefty_icons: ^1.0.5
+  eva_icons_flutter: ^3.1.0
+  expandable: ^5.0.1
+  file_picker: ^4.1.4
+  firebase_core: ^2.15.1
+  firebase_storage: ^11.2.8
+  flutter:
+    sdk: flutter
+  flutter_form_builder: ^9.1.1
+  flutter_neumorphic: ^3.2.0
+  flutter_pdfview: ^1.0.2
+  font_awesome_flutter: ^10.3.0
+  intl: ^0.18.1
+  url_launcher: ^6.1.6
+  
+>>>>>>> repo-a/main
 # icons_launcher:
 #   image_path: "assets/app_icon.png"
 #   platforms:
@@ -39,6 +61,10 @@ dependencies:
 #       enable: true
 #     ios:
 #       enable: true
+<<<<<<< HEAD
+=======
+
+>>>>>>> repo-a/main
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:

@@ -1,9 +1,7 @@
 import 'package:alsagr_app/data_sources/news_api.dart';
 import 'package:alsagr_app/models/playerModel.dart';
-import 'package:alsagr_app/services/firebase_api.dart';
+import 'package:alsagr_app/services/firebaseApi.dart';
 import 'package:flutter/material.dart';
-
-import '../components/network_image.dart';
 
 class PlayersCard extends StatefulWidget {
   const PlayersCard({super.key});
@@ -37,7 +35,7 @@ class _PlayersCardState extends State<PlayersCard> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () async {
-                            await getData("players");
+                            await getNews();
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -47,29 +45,40 @@ class _PlayersCardState extends State<PlayersCard> {
                               child: Column(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: AppCashedImage(
-                                      imageUrl:
-                                          players?[index].playerImage ?? "",
-                                      height:
-                                          MediaQuery.of(context).size.width *
-                                              0.2,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.3,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                  Text(
-                                    players?[index].playerPosition ?? "",
-                                  ),
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        players?[index].playerImage ?? "",
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                const Icon(Icons.face),
+                                        loadingBuilder:
+                                            (context, child, loadingProgress) {
+                                          return loadingProgress == null
+                                              ? child
+                                              : CircularProgressIndicator
+                                                  .adaptive(
+                                                  value: loadingProgress
+                                                          .cumulativeBytesLoaded /
+                                                      loadingProgress
+                                                          .expectedTotalBytes!
+                                                          .toInt(),
+                                                );
+                                        },
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                0.2,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.3,
+                                        fit: BoxFit.contain,
+                                      )),
+                                  Text(players?[index].playerPosition ?? ""),
                                   Text((players?[index]
                                               .playerNumber
                                               .toString() ??
                                           "")
                                       .replaceAll("null", "")),
-                                  Text(
-                                    players?[index].playerName ?? "",
-                                  ),
+                                  Text(players?[index].playerName ?? ""),
                                 ],
                               ),
                             ),
@@ -78,25 +87,6 @@ class _PlayersCardState extends State<PlayersCard> {
                       },
                     ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     TextButton(
-                  //         onPressed: () async {
-                  //           // await NextMatchDataSources.addNextMatchToFirestore(
-                  //           //     NextMatchModel());
-                  //           // تودينه صفحه وتمررين اللسته عشان تعرضين الكل
-                  //           //مافهمت كيف
-                  //           // يلا نكمل شرح اجل ههههههههههههههههههههه
-                  //           // Navigator.of(context).push(
-                  //           //   MaterialPageRoute(
-                  //           //     builder: (context) =>
-                  //           //         AllPlayers(playersList: playersList),
-                  //           //   ),
-                  //           // );
-                  //         },
-                  //         child: const Text('عرض المزيد')),
-                  //   ],
-                  // ),
                 ],
               ),
             ),

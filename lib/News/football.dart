@@ -1,4 +1,4 @@
-import 'package:alsagr_app/services/firebase_api.dart';
+// ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -16,33 +16,33 @@ class _FootballState extends State<Football> {
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
         children: [
-          FutureBuilder(
-            future: FirebaseApiService().readFromFirestore('news'),
-            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else if (!snapshot.hasData || snapshot.data.isEmpty) {
-                return const Text('No documents found in the collection.');
-              } else {
-                final List<QueryDocumentSnapshot<Map<String, dynamic>>>
-                    documentList = snapshot.data
-                        as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
+          // FutureBuilder(
+          //   future: FirebaseApiService().readFromFirestore('news'),
+          //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return const CircularProgressIndicator();
+          //     } else if (snapshot.hasError) {
+          //       return Text('Error: ${snapshot.error}');
+          //     } else if (!snapshot.hasData || snapshot.data.isEmpty) {
+          //       return const Text('No documents found in the collection.');
+          //     } else {
+          //       final List<QueryDocumentSnapshot<Map<String, dynamic>>>
+          //           documentList = snapshot.data
+          //               as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
 
-                return Column(
-                  children: documentList.map((document) {
-                    return Column(
-                      children: [
-                        Text('Document ID: ${document.id}'),
-                        Text('Data: ${document.data()}'),
-                      ],
-                    );
-                  }).toList(),
-                );
-              }
-            },
-          ),
+          //       return Column(
+          //         children: documentList.map((document) {
+          //           return Column(
+          //             children: [
+          //               Text('Document ID: ${document.id}'),
+          //               Text('Data: ${document.data()}'),
+          //             ],
+          //           );
+          //         }).toList(),
+          //       );
+          //     }
+          //   },
+          // ),
           const SizedBox(height: 18.0),
           Container(
             decoration: BoxDecoration(

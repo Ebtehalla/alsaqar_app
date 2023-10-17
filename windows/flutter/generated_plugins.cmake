@@ -3,9 +3,13 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
   connectivity_plus
   firebase_core
   flutter_localization
+=======
+  firebase_core
+>>>>>>> repo-a/main
   url_launcher_windows
 )
 

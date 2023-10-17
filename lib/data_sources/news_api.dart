@@ -1,14 +1,24 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-Future<List<DocumentSnapshot>> getData(String collectionName) async {
+
+import '../models/news_model.dart';
+
+Future<List<NewsModel>?> getNews() async {
+  List<NewsModel> news = [];
   try {
-    QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection(collectionName).get();
-    List<DocumentSnapshot> documents = querySnapshot.docs;
-    return documents;
+    CollectionReference collection =
+        FirebaseFirestore.instance.collection('news');
+    QuerySnapshot querySnapshot = await collection.get();
+    // Loop through the documents and access the data
+    for (var i = 0; i < querySnapshot.size; i++) {
+      DocumentSnapshot document = querySnapshot.docs[i];
+      news.add(NewsModel.fromMap(document.data() as Map<String, dynamic>));
+    }
+    log(news.toString());
+    return news;
   } catch (e) {
-    log('Error reading documents: $e');
-    return [];
+    log('Error getting data: $e');
+    return null;
   }
 }

@@ -2,8 +2,8 @@ import 'package:alsagr_app/HomePages/imageheadr.dart';
 import 'package:alsagr_app/HomePages/math.dart';
 import 'package:alsagr_app/HomePages/players_card.dart';
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/components/footer.dart';
 import 'package:flutter/material.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required String title, required String imagePath});
@@ -70,14 +70,9 @@ class _HomePageState extends State<HomePage> {
                     child: Center(
                       child: Container(
                         alignment: Alignment.centerRight,
-                        color: const Color.fromARGB(255, 107, 67, 114),
-                        child: const Text(
-                          'نادي الصقر السعودي @2023',
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 18.0,
-                          ),
-                        ),
+                        color: const Color.fromARGB(
+                            255, 49, 134, 55), // تحديد لون النص ه
+                        child: const Footer(),
                       ),
                     ),
                   ),

@@ -13,7 +13,6 @@ class _emploeeykeyState extends State<emploeeykey> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'مثال حقل النص',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -49,12 +48,12 @@ class _emploeeykeyState extends State<emploeeykey> {
                     ' وظائف شاغرة',
                     style: TextStyle(fontSize: 24),
                   ),
-                  const SizedBox(height: 20),
-                  Image.asset(
-                    'assets/emploe.jpg', // Replace with the path to your image
-                    width: 500,
-                    height: 400,
-                  ),
+
+                  // Image.asset(
+                  //   'assets/emploe.jpg', // Replace with the path to your image
+                  //   width: 500,
+                  //   height: 400,
+                  // ),
                   const SizedBox(height: 40),
                   const TextField(
                     decoration: InputDecoration(

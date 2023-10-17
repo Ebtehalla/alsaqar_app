@@ -54,7 +54,7 @@ class _HotelState extends State<hotel> {
                 return Column(
                   children: newsData.map((news) {
                     final newsTitle = news.get('title');
-                    final imageUrl = news.get('imageUrl');
+                    final imageUrl = news.get('img');
                     return Column(
                       children: [
                         Container(
