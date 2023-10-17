@@ -3,10 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-<<<<<<< HEAD
   flutter_localization
-=======
->>>>>>> repo-a/main
   url_launcher_linux
 )
 
