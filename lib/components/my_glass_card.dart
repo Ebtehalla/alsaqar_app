@@ -27,7 +27,6 @@ class _GlassCardState extends State<GlassCard> {
   double height = 200;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     height = (widget.fullSize == null
         ? widget.gcHieght ?? height

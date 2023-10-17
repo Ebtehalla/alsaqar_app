@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:alsagr_app/components/drawer.dart';
-import 'package:alsagr_app/components/myGlassCard.dart';
+import 'package:alsagr_app/components/my_glass_card.dart';
 
 // ignore: camel_case_types
 class roawaacl extends StatefulWidget {

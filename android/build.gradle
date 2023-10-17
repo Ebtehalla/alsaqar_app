@@ -24,18 +24,11 @@ allprojects {
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-<<<<<<< HEAD
 }
 subprojects {
     project.evaluationDependsOn(':app')
 }
 
-=======
-    project.evaluationDependsOn(':app')
-}
-
-
->>>>>>> repo-a/main
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

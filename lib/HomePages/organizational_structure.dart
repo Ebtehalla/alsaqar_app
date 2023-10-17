@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class organizational_structure extends StatefulWidget {
+class OrganizationalStructure extends StatefulWidget {
   // تاخذين اسم الكلاس:
-  const organizational_structure({super.key});
+  const OrganizationalStructure({super.key});
 
   @override
-  State<organizational_structure> createState() =>
-      _organizational_structureState();
+  State<OrganizationalStructure> createState() =>
+      _OrganizationalStructureState();
 }
 
-class _organizational_structureState extends State<organizational_structure> {
+class _OrganizationalStructureState extends State<OrganizationalStructure> {
   @override
   Widget build(BuildContext context) {
     return Padding(

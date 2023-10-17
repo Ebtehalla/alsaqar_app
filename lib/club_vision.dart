@@ -5,6 +5,7 @@ class ClubVision extends StatefulWidget {
   const ClubVision({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ClubVisionState createState() => _ClubVisionState();
 }
 

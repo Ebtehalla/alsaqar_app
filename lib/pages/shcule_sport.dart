@@ -24,12 +24,14 @@ class Match {
   });
 }
 
-class sportclander extends StatefulWidget {
+class Sportclander extends StatefulWidget {
+  const Sportclander({super.key});
+
   @override
-  State<sportclander> createState() => _sportclanderState();
+  State<Sportclander> createState() => _SportclanderState();
 }
 
-class _sportclanderState extends State<sportclander> {
+class _SportclanderState extends State<Sportclander> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,7 +150,7 @@ class _sportclanderState extends State<sportclander> {
                           width: double.infinity,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 24, 90, 57),
+                            color: const Color.fromARGB(255, 24, 90, 57),
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(

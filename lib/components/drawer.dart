@@ -11,10 +11,10 @@ import 'package:alsagr_app/HomePages/rowaa_club.dart';
 import 'package:alsagr_app/HomePages/suggets.dart';
 import 'package:alsagr_app/club_vision.dart';
 import 'package:alsagr_app/components/pdf_screen.dart';
-import 'package:alsagr_app/pages/News.dart';
+import 'package:alsagr_app/pages/news.dart';
 import 'package:alsagr_app/pages/contact.dart';
 import 'package:alsagr_app/pages/homepage.dart';
-import 'package:alsagr_app/pages/shcule-sport.dart';
+import 'package:alsagr_app/pages/shcule_sport.dart';
 import 'package:enefty_icons/enefty_icons.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +34,12 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Drawer(
+    return Drawer(
+      child: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               // Header
-              const SizedBox(height: 12),
               Stack(
                 children: [
                   Align(
@@ -67,167 +66,157 @@ class _MyDrawerState extends State<MyDrawer> {
                 ],
               ),
               // Body
-              Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                    child: Divider(),
-                  ),
-                  myExpandedWidget(
-                    context,
-                    'الرئيسية',
-                    [
-                      GestureDetector(
-                        onTap: () => navigateToKey(context, widget.keys, 0),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Text('اللاعبين'),
-                              const SizedBox(height: 12),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(() => const OrgStrctureScreeen());
-                                },
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text('الهيكل التنظيمي'),
-                                  ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    myExpandedWidget(
+                      context,
+                      'الرئيسية',
+                      [
+                        GestureDetector(
+                          onTap: () => navigateToKey(context, widget.keys, 0),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const Text('اللاعبين'),
+                                const SizedBox(height: 12),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const OrgStrctureScreeen());
+                                  },
+                                  child: const Text('الهيكل التنظيمي'),
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                              GestureDetector(
-                                onTap: () =>
-                                    navigateToKey(context, widget.keys, 2),
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text('المباراة القادمة'),
-                                  ],
+                                const SizedBox(height: 12),
+                                GestureDetector(
+                                  onTap: () =>
+                                      navigateToKey(context, widget.keys, 2),
+                                  child: const Text('المباراة القادمة'),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                    EneftyIcons.home_outline,
-                  ),
-                  const SizedBox(height: 20),
-                  const myListTile(
-                    title: ' نبذة التاريخية ',
-                    icon: EneftyIcons.information_outline,
-                    screenName: roawaacl(),
-                  ),
-                  const SizedBox(height: 20),
-                  const myListTile(
-                    title: 'الاخبار',
-                    icon: EneftyIcons.book_2_outline,
-                    screenName: NewsPage(),
-                  ),
-                  const SizedBox(height: 20),
-                  myListTile(
-                    title: 'جدول المباريات',
-                    icon: Icons.sports_volleyball_outlined,
-                    screenName: sportclander(), // بدلي الصفحات حقها بعدين
-                  ),
-                  const SizedBox(height: 20),
-                  myExpandedWidget(
-                    context,
-                    'الإستراتيجية',
-                    [
-                      const myListTile(
-                        title: 'رؤية النادي ورسالته',
-                        icon: Icons.message_sharp,
-                        screenName: ClubVision(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      const myListTile(
-                        title: 'الاهداف الإستراتيجية',
-                        icon: Icons.grading_outlined,
-                        screenName: goalsclub(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      const myListTile(
-                        title: 'وثيقة الخطة الإستراتيجية',
-                        icon: Icons.format_list_bulleted,
-                        screenName: PdfScreen(
-                          pdf:
-                              "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/__%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9%20(1).pdf?alt=media&token=2eb2af27-f55a-4cc8-a37c-346f9fabc0c9&_gl=1*14x7zam*_ga*MTA5MjI0NDU4LjE2Nzk5MDg4MzY.*_ga_CW55HF8NVT*MTY5NzA5OTc5Ny4xNTcuMS4xNjk3MDk5ODI1LjMyLjAuMA..",
+                      ],
+                      EneftyIcons.home_outline,
+                    ),
+                    const SizedBox(height: 20),
+                    const MyListTile(
+                      title: ' نبذة التاريخية ',
+                      icon: EneftyIcons.information_outline,
+                      screenName: roawaacl(),
+                    ),
+                    const SizedBox(height: 20),
+                    const MyListTile(
+                      title: 'الاخبار',
+                      icon: EneftyIcons.book_2_outline,
+                      screenName: NewsPage(),
+                    ),
+                    const SizedBox(height: 20),
+                    const MyListTile(
+                      title: 'جدول المباريات',
+                      icon: Icons.sports_volleyball_outlined,
+                      screenName: Sportclander(), // بدلي الصفحات حقها بعدين
+                    ),
+                    const SizedBox(height: 20),
+                    myExpandedWidget(
+                      context,
+                      'الإستراتيجية',
+                      [
+                        const MyListTile(
+                          title: 'رؤية النادي ورسالته',
+                          icon: Icons.message_sharp,
+                          screenName: ClubVision(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        const MyListTile(
+                          title: 'الاهداف الإستراتيجية',
+                          icon: Icons.grading_outlined,
+                          screenName: Goalsclub(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        const MyListTile(
                           title: 'وثيقة الخطة الإستراتيجية',
+                          icon: Icons.format_list_bulleted,
+                          screenName: PdfScreen(
+                            pdf:
+                                "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/__%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9%20(1).pdf?alt=media&token=2eb2af27-f55a-4cc8-a37c-346f9fabc0c9&_gl=1*14x7zam*_ga*MTA5MjI0NDU4LjE2Nzk5MDg4MzY.*_ga_CW55HF8NVT*MTY5NzA5OTc5Ny4xNTcuMS4xNjk3MDk5ODI1LjMyLjAuMA..",
+                            title: 'وثيقة الخطة الإستراتيجية',
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      const myListTile(
-                        title: "التقرير السنوي",
-                        icon: Icons.format_list_bulleted,
-                        screenName: PdfScreen(
-                          pdf: "https://alsaqerfc.sa/site/annulreport.pdf",
+                        const SizedBox(height: 12),
+                        const MyListTile(
                           title: "التقرير السنوي",
+                          icon: Icons.format_list_bulleted,
+                          screenName: PdfScreen(
+                            pdf: "https://alsaqerfc.sa/site/annulreport.pdf",
+                            title: "التقرير السنوي",
+                          ),
                         ),
-                      ),
-                    ],
-                    EneftyIcons.diagram_outline,
-                  ),
-                  const SizedBox(height: 20),
-                  myExpandedWidget(
-                    context,
-                    'الاستطلاعات',
-                    [
-                      myListTile(
-                        title: 'استطلاع الجمهور',
-                        icon: Icons.poll,
-                        screenName: SurveyScreen(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      myListTile(
-                        title: 'استطلاع الموظفين',
-                        icon: Icons.group,
-                        screenName: pageemplo(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      myListTile(
-                        title: 'استطلاع الزوار',
-                        icon: Icons.person_search_sharp,
-                        screenName: pagevisit(), // بدلي الصفحات حقها بعدين
-                      ),
-                    ],
-                    EneftyIcons.note_2_outline,
-                  ),
-                  const SizedBox(height: 20),
-                  myExpandedWidget(
-                    context,
-                    'التواصل',
-                    [
-                      const myListTile(
-                        title: 'تواصل معنا',
-                        icon: Icons.contactless_outlined,
-                        screenName: ContactForm(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      const myListTile(
-                        title: 'التوظيف',
-                        icon: Icons.people_alt,
-                        screenName: emploeeykey(), // بدلي الصفحات حقها بعدين
-                      ),
-                      const SizedBox(height: 12),
-                      const myListTile(
-                        title: 'البلاغات والشكاوي',
-                        icon: Icons.event_note_outlined,
-                        screenName: problem(), // بدلي الصفحات حقها بعدين
-                      ),
-                    ],
-                    EneftyIcons.message_circle_outline,
-                  ),
-                  const SizedBox(height: 20),
-                  const myListTile(
-                    title: 'المتجر',
-                    icon: EneftyIcons.shop_outline,
-                  ),
-                ],
+                      ],
+                      EneftyIcons.diagram_outline,
+                    ),
+                    const SizedBox(height: 20),
+                    myExpandedWidget(
+                      context,
+                      'الاستطلاعات',
+                      [
+                        MyListTile(
+                          title: 'استطلاع الجمهور',
+                          icon: Icons.poll,
+                          screenName: SurveyScreen(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        MyListTile(
+                          title: 'استطلاع الموظفين',
+                          icon: Icons.group,
+                          screenName: PageEmplo(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        MyListTile(
+                          title: 'استطلاع الزوار',
+                          icon: Icons.person_search_sharp,
+                          screenName: PageVisit(), // بدلي الصفحات حقها بعدين
+                        ),
+                      ],
+                      EneftyIcons.note_2_outline,
+                    ),
+                    const SizedBox(height: 20),
+                    myExpandedWidget(
+                      context,
+                      'التواصل',
+                      [
+                        const MyListTile(
+                          title: 'تواصل معنا',
+                          icon: Icons.contactless_outlined,
+                          screenName: ContactForm(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        const MyListTile(
+                          title: 'التوظيف',
+                          icon: Icons.people_alt,
+                          screenName: Emploeeykey(), // بدلي الصفحات حقها بعدين
+                        ),
+                        const SizedBox(height: 12),
+                        const MyListTile(
+                          title: 'البلاغات والشكاوي',
+                          icon: Icons.event_note_outlined,
+                          screenName: Problem(), // بدلي الصفحات حقها بعدين
+                        ),
+                      ],
+                      EneftyIcons.message_circle_outline,
+                    ),
+                    const SizedBox(height: 20),
+                    const MyListTile(
+                      title: 'المتجر',
+                      icon: EneftyIcons.shop_outline,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -259,8 +248,8 @@ navigateToKey(BuildContext context, List<GlobalKey>? keys, int index) {
   }
 }
 
-class myListTile extends StatelessWidget {
-  const myListTile(
+class MyListTile extends StatelessWidget {
+  const MyListTile(
       {super.key, required this.title, required this.icon, this.screenName});
   final String title;
   final Widget? screenName;

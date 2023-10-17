@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/playerModel.dart';
+import '../models/player_model.dart';
 
 class FirebaseApiService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

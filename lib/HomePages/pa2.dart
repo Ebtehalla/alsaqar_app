@@ -2,10 +2,10 @@ import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class pagevisit extends StatelessWidget {
+class PageVisit extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
-  pagevisit({Key? key}) : super(key: key);
+  PageVisit({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

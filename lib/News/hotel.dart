@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -9,26 +11,26 @@ class FirebaseApi {
           await FirebaseFirestore.instance.collection(collectionName).get();
 
       if (snapshot.docs.isEmpty) {
-        print('No documents found in the collection.');
+        log('No documents found in the collection.');
         return [];
       }
 
       return snapshot.docs;
     } catch (e) {
-      print('Error reading from Firestore: $e');
+      log('Error reading from Firestore: $e');
       return [];
     }
   }
 }
 
-class hotel extends StatefulWidget {
-  const hotel({Key? key}) : super(key: key);
+class Hotel extends StatefulWidget {
+  const Hotel({Key? key}) : super(key: key);
 
   @override
-  State<hotel> createState() => _HotelState();
+  State<Hotel> createState() => _HotelState();
 }
 
-class _HotelState extends State<hotel> {
+class _HotelState extends State<Hotel> {
   @override
   Widget build(BuildContext context) {
     return Padding(

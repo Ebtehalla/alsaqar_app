@@ -1,14 +1,14 @@
 import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 
-class problem extends StatefulWidget {
-  const problem({super.key});
+class Problem extends StatefulWidget {
+  const Problem({super.key});
 
   @override
-  State<problem> createState() => _problemState();
+  State<Problem> createState() => _ProblemState();
 }
 
-class _problemState extends State<problem> {
+class _ProblemState extends State<Problem> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

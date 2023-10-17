@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class mangarmm extends StatefulWidget {
-  const mangarmm({Key? key}) : super(key: key);
+class Mangarmm extends StatefulWidget {
+  const Mangarmm({Key? key}) : super(key: key);
 
   @override
-  State<mangarmm> createState() => _mangarmmState();
+  State<Mangarmm> createState() => _MangarmmState();
 }
 
-class _mangarmmState extends State<mangarmm> {
+class _MangarmmState extends State<Mangarmm> {
   @override
   Widget build(BuildContext context) {
     return Padding(

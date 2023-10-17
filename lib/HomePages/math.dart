@@ -3,6 +3,8 @@ import 'package:alsagr_app/models/next_match_model.dart';
 import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 
+import '../components/network_image.dart';
+
 class Mathsport extends StatefulWidget {
   const Mathsport({Key? key}) : super(key: key);
 
@@ -33,19 +35,12 @@ class _MathsportState extends State<Mathsport> {
                         width: 2.0,
                         style: BorderStyle.none, // نمط الحافة المتقطعة
                       ),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
-                          color: const Color.fromARGB(255, 115, 62, 97)
-                              .withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(6, 6),
-                        ),
-                        const BoxShadow(
                           color: Color.fromARGB(255, 236, 233, 233),
                           spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(-6, -6),
+                          blurRadius: 10,
+                          offset: Offset(0, 2),
                         ),
                       ],
                     ),
@@ -74,11 +69,12 @@ class _MathsportState extends State<Mathsport> {
                                   //   width: 100,
                                   // ),
                                   Center(
-                                      child: Image.network(
-                                    match?.away?.image ?? "",
-                                    height: 100,
-                                    width: 50,
-                                  )),
+                                    child: AppCashedImage(
+                                      imageUrl: match?.away?.image ?? "",
+                                      height: 60,
+                                      width: 60,
+                                    ),
+                                  ),
                                   Text(match?.away?.name ?? ""),
                                 ],
                               ),
@@ -103,11 +99,12 @@ class _MathsportState extends State<Mathsport> {
                                   //   width: 100,
                                   // ),
                                   Center(
-                                      child: Image.network(
-                                    match?.home?.image ?? "",
-                                    height: 100,
-                                    width: 50,
-                                  )),
+                                    child: AppCashedImage(
+                                      imageUrl: match?.home?.image ?? "",
+                                      height: 60,
+                                      width: 60,
+                                    ),
+                                  ),
                                   Text(match?.home?.name ?? ""),
                                 ],
                               ),
@@ -144,7 +141,8 @@ class _MathsportState extends State<Mathsport> {
                                       Text(
                                         'المكان',
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600),
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                       SizedBox(width: 2),
                                       Icon(EneftyIcons.location_outline),

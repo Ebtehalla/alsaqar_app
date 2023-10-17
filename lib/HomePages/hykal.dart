@@ -2,12 +2,15 @@ import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class hakll extends StatefulWidget {
+class Hakll extends StatefulWidget {
+  const Hakll({super.key});
+
   @override
-  _hakllState createState() => _hakllState();
+  // ignore: library_private_types_in_public_api
+  _HakllState createState() => _HakllState();
 }
 
-class _hakllState extends State<hakll> {
+class _HakllState extends State<Hakll> {
   late Future<Widget> imageFromFirestore;
 
   @override
@@ -52,7 +55,7 @@ class _hakllState extends State<hakll> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

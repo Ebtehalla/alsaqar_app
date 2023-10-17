@@ -1,15 +1,17 @@
+import 'dart:developer';
+
 import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
-class emploeeykey extends StatefulWidget {
-  const emploeeykey({super.key});
+class Emploeeykey extends StatefulWidget {
+  const Emploeeykey({super.key});
 
   @override
-  State<emploeeykey> createState() => _emploeeykeyState();
+  State<Emploeeykey> createState() => _EmploeeykeyState();
 }
 
-class _emploeeykeyState extends State<emploeeykey> {
+class _EmploeeykeyState extends State<Emploeeykey> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -103,10 +105,10 @@ class _emploeeykeyState extends State<emploeeykey> {
                         PlatformFile file = result.files.first;
                         String filePath = file.path!;
                         // Add your custom code here to handle the selected resume file
-                        print('Selected resume file: $filePath');
+                        log('Selected resume file: $filePath');
                       } else {
                         // User canceled the file picking
-                        print('File picking canceled.');
+                        log('File picking canceled.');
                       }
                     },
                     child: Padding(

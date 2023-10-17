@@ -1,6 +1,10 @@
-import 'package:alsagr_app/services/function.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
+import 'package:alsagr_app/services/function.dart';
+import 'package:url_launcher/url_launcher.dart';
 class Footer extends StatefulWidget {
   const Footer({super.key});
 
@@ -70,16 +74,20 @@ class _FooterState extends State<Footer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              icon: Image.asset('assets/new_twitter.png'),
-              onPressed: () => openSocialMedia(
-                  'https://twitter.com/ALSAQERFC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'),
+            const SocialMediaButton(
+              icon: 'assets/new_twitter.png',
+              link:
+                  'https://twitter.com/ALSAQERFC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor',
             ),
             IconButton(
               icon: Image.asset(
-                  'assets/social.png'), // استبدل بأيقونة سناب شات الخاصة بك
-              onPressed: () => openSocialMedia(
-                  'https://www.snapchat.com/add/alsaqerfc1404?share_id=MDBCOUU4MEQtOEI3My00NEIzLUI4MTYtRDc2NUNGMzhGQUJD&locale=ar_SA@calendar=gregorian;numbers=latn&sid=c1f27695138441379274d5304b75de2d'),
+                'assets/social.png',
+              ), // استبدل بأيقونة سناب شات الخاصة بك
+              onPressed: () async {
+                openSocialMedia(
+                  'https://www.snapchat.com/add/alsaqerfc1404?share_id=MDBCOUU4MEQtOEI3My00NEIzLUI4MTYtRDc2NUNGMzhGQUJD&locale=ar_SA@calendar=gregorian;numbers=latn&sid=c1f27695138441379274d5304b75de2d',
+                );
+              },
             ),
             IconButton(
               icon: Image.asset(
@@ -127,6 +135,34 @@ class _FooterState extends State<Footer> {
           ),
         )
       ],
+    );
+  }
+}
+
+class SocialMediaButton extends StatelessWidget {
+  const SocialMediaButton({
+    Key? key,
+    required this.icon,
+    this.link,
+  }) : super(key: key);
+  final String icon;
+  final String? link;
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Image.asset(icon), // استبدل بأيقونة سناب شات الخاصة بك
+      onPressed: () async {
+        if (link != null) {
+          try {
+            await launchUrl(
+              Uri.parse(link ?? ""),
+              mode: LaunchMode.externalApplication,
+            );
+          } catch (e) {
+            log(e.toString());
+          }
+        }
+      },
     );
   }
 }

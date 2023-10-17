@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class AllPlayers extends StatefulWidget {
@@ -12,8 +14,8 @@ class _AllPlayersState extends State<AllPlayers> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> playersList = widget.playersList;
-    print('صفحة جميع اللاعبين تسلم عليك وتقول');
-    print(playersList);
+    log('صفحة جميع اللاعبين تسلم عليك وتقول');
+    log(playersList.toString());
     return Scaffold(
       appBar: AppBar(
         title: const Text('اللاعبين'),
@@ -62,7 +64,7 @@ class _AllPlayersState extends State<AllPlayers> {
                     // بما انا بسويه من يمين ليسار فبحدد ارتفاع
                     return GestureDetector(
                       onTap: () {
-                        print(currentPlayer);
+                        log(currentPlayer.toString());
                       },
                       // تقربا كذا بيكون الكارد مع شوي ستايل للخط والكلام
                       // ونخلي الصوره تملا البكس

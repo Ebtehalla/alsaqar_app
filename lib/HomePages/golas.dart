@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:alsagr_app/components/drawer.dart';
 
 // ignore: camel_case_types
-class goalsclub extends StatefulWidget {
-  const goalsclub({super.key});
+class Goalsclub extends StatefulWidget {
+  const Goalsclub({super.key});
 
   @override
-  _goalsclubState createState() => _goalsclubState();
+  // ignore: library_private_types_in_public_api
+  _GoalsclubState createState() => _GoalsclubState();
 }
 
-class _goalsclubState extends State<goalsclub> {
+class _GoalsclubState extends State<Goalsclub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

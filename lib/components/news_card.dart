@@ -1,3 +1,4 @@
+import 'package:alsagr_app/components/network_image.dart';
 import 'package:alsagr_app/pages/news_full_information.dart';
 import 'package:flutter/material.dart';
 
@@ -41,12 +42,9 @@ class _MyNewsCardState extends State<MyNewsCard> {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    content: Image.network(
+                    content: AppCashedImage(
                       fit: BoxFit.contain,
-                      widget.img,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset('assets/alsaqarbyholder.png');
-                      },
+                      imageUrl: widget.img,
                     ),
                   );
                 },
@@ -60,12 +58,9 @@ class _MyNewsCardState extends State<MyNewsCard> {
                   bottomRight: Radius.circular(12),
                   topRight: Radius.circular(12),
                 ),
-                child: Image.network(
+                child: AppCashedImage(
                   fit: BoxFit.cover,
-                  widget.img,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Image.asset('assets/alsaqarbyholder.png');
-                  },
+                  imageUrl: widget.img,
                 ),
               ),
             ),

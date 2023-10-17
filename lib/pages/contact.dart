@@ -12,7 +12,7 @@ class ContactForm extends StatefulWidget {
 }
 
 class _ContactFormState extends State<ContactForm> {
-  void _openSocialMedia(String url) async {
+  void openSocialMedia(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -117,7 +117,8 @@ class _ContactFormState extends State<ContactForm> {
                 child: Center(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    color: Color.fromARGB(255, 49, 134, 55), // تحديد لون النص ه
+                    color: const Color.fromARGB(
+                        255, 49, 134, 55), // تحديد لون النص ه
                     child: const Footer(),
                   ),
                 ),

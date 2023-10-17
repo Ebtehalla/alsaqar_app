@@ -1,8 +1,9 @@
 import 'dart:core';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/playerModel.dart';
+import '../models/player_model.dart';
 
 class FirebaseApiService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -25,7 +26,7 @@ class FirebaseApiService {
 
     //! End deleting players from the firestore
     //! Start adding players to the firestore
-    print("adding players to the firestore");
+    log("adding players to the firestore");
     List<PlayerModel> playersList = [];
     for (Map<String, dynamic> player in players) {
       playersList.add(PlayerModel.fromJson(player));
@@ -39,10 +40,12 @@ class FirebaseApiService {
             .collection('players')
             .doc()
             .set(playerModel.toJson())
-            .onError((error, stackTrace) => print(error.toString()))
-            .then((value) => print("Player Uploaded successfully"));
+            .onError((error, stackTrace) => log(error.toString()))
+            .then((value) {
+          log("Player Uploaded successfully");
+        });
       } catch (e) {
-        print(e);
+        log(e.toString());
       }
     }
     //! End adding players to the firestore
@@ -57,7 +60,7 @@ class FirebaseApiService {
         playersList
             .add(PlayerModel.fromJson(doc.data() as Map<String, dynamic>));
       }
-      print(playersList.toString());
+      log(playersList.toString());
       return playersList;
     });
   }

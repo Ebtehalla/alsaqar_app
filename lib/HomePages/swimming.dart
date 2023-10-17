@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class swimming extends StatefulWidget {
-  const swimming({super.key});
+class Swimming extends StatefulWidget {
+  const Swimming({super.key});
 
   @override
-  State<swimming> createState() => _swimmingState();
+  State<Swimming> createState() => _SwimmingState();
 }
 
-class _swimmingState extends State<swimming> {
+class _SwimmingState extends State<Swimming> {
   @override
   Widget build(BuildContext context) {
     return Padding(
