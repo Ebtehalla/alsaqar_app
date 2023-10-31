@@ -6,7 +6,7 @@ import 'package:alsagr_app/components/drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactForm extends StatefulWidget {
-  const ContactForm({Key? key}) : super(key: key);
+  const ContactForm({super.key});
   @override
   State<ContactForm> createState() => _ContactFormState();
 }
@@ -117,8 +117,7 @@ class _ContactFormState extends State<ContactForm> {
                 child: Center(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    color: const Color.fromARGB(
-                        255, 49, 134, 55), // تحديد لون النص ه
+                
                     child: const Footer(),
                   ),
                 ),
