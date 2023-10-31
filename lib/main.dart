@@ -61,6 +61,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       navigatorObservers: [BotToastNavigatorObserver()],
+      title: "نادي الصقر",
       debugShowCheckedModeBanner: false,
       locale: const Locale('ar', 'EG'),
       fallbackLocale: TranslationsService.fallbackLocale,
