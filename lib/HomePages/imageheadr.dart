@@ -26,7 +26,7 @@ class _ImageHeadrState extends State<ImageHeadr> {
             itemBuilder: (context, index, realIndex) {
               var item = news?[index];
               return AppCashedImage(
-                imageUrl: item?.imageUrl ?? "",
+                imageUrl: item?.img ?? "",
                 fit: BoxFit.cover,
                 width: context.width,
               );

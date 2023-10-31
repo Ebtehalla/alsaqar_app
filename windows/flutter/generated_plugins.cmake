@@ -3,7 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus
+  cloud_firestore
   firebase_core
   flutter_localization
   url_launcher_windows

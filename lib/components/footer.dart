@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:alsagr_app/services/function.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 class Footer extends StatefulWidget {
   const Footer({super.key});
 
@@ -18,15 +19,16 @@ class _FooterState extends State<Footer> {
     return Column(
       children: [
         SizedBox(
-            width: MediaQuery.of(context).size.shortestSide * 0.2,
-            height: MediaQuery.of(context).size.shortestSide * 0.2,
-            child: ClipOval(
-              child: Image.asset(
-                'assets/Alsaaqerclub.jpg',
-                height: MediaQuery.of(context).size.width * 0.3,
-                fit: BoxFit.cover,
-              ),
-            )),
+          width: MediaQuery.of(context).size.shortestSide * 0.2,
+          height: MediaQuery.of(context).size.shortestSide * 0.2,
+          child: ClipOval(
+            child: Image.asset(
+              'assets/Alsaaqerclub.jpg',
+              height: MediaQuery.of(context).size.width * 0.3,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -141,10 +143,10 @@ class _FooterState extends State<Footer> {
 
 class SocialMediaButton extends StatelessWidget {
   const SocialMediaButton({
-    Key? key,
+    super.key,
     required this.icon,
     this.link,
-  }) : super(key: key);
+  });
   final String icon;
   final String? link;
   @override

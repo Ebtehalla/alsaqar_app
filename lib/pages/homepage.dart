@@ -65,8 +65,8 @@ class _HomePageState extends State<HomePage> {
                   const PlayersCard(),
                   Padding(
                     padding: const EdgeInsets.only(
-                        bottom:
-                            5.0), // Change the value to adjust the padding size
+                      bottom: 5.0,
+                    ), // Change the value to adjust the padding size
                     child: Center(
                       child: Container(
                         alignment: Alignment.centerRight,

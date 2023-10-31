@@ -1,12 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bot_toast/bot_toast.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:alsagr_app/firebase_options.dart';
@@ -14,7 +12,6 @@ import 'package:alsagr_app/others/error_screen.dart';
 import 'package:alsagr_app/pages/homepage.dart';
 
 import 'core/language/translations_service.dart';
-import 'others/no_internet_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,32 +29,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _backViewOn = true;
   final botToastBuilder = BotToastInit();
-
-  @override
-  void initState() {
-    Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) async {
-      if (!await InternetConnectionChecker().hasConnection) {
-        if (!_backViewOn) {
-          setState(() {
-            _backViewOn = true;
-          });
-          Get.dialog(const NoInternetDialog(canDismiss: true));
-        }
-      } else {
-        if (_backViewOn) {
-          Get.back();
-          setState(() {
-            _backViewOn = false;
-          });
-        }
-      }
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
