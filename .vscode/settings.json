@@ -1,0 +1,11 @@
+{
+  "editor.tokenColorCustomizations": {
+    // "comments": "0xffEE9D41",
+    "textMateRules": []
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "commentTranslate.hover.enabled": true,
+  "cmake.sourceDirectory": "C:/Users/ellio/Documents/Under Maintance/Mobile/projects/sharek/sharek/build/windows/extracted/firebase_cpp_sdk"
+}

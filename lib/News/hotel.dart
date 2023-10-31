@@ -51,12 +51,10 @@ class _HotelState extends State<hotel> {
                 if (newsData!.isEmpty) {
                   return const Text('No news found');
                 }
-
                 return Column(
                   children: newsData.map((news) {
                     final newsTitle = news.get('title');
                     final imageUrl = news.get('imageUrl');
-
                     return Column(
                       children: [
                         Container(

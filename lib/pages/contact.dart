@@ -10,8 +10,13 @@ class ContactForm extends StatefulWidget {
 
 class _ContactFormState extends State<ContactForm> {
   void _openSocialMedia(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(
+      Uri.parse(url),
+    )) {
+      await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
     } else {
       throw 'Could not launch $url';
     }
@@ -28,7 +33,7 @@ class _ContactFormState extends State<ContactForm> {
               child: Image.asset('assets/Alsaaqerclub.jpg'),
             )
           ],
-          backgroundColor: Color.fromARGB(255, 86, 45, 93),
+          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
           centerTitle: true,
           toolbarHeight: 60,
           shape: const RoundedRectangleBorder(
@@ -96,7 +101,7 @@ class _ContactFormState extends State<ContactForm> {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  primary: const Color.fromARGB(
+                  backgroundColor: const Color.fromARGB(
                       255, 55, 122, 58), // Set the desired color here
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(
@@ -142,7 +147,7 @@ class _ContactFormState extends State<ContactForm> {
                 child: Center(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    color: Color.fromARGB(255, 107, 67, 114),
+                    color: const Color.fromARGB(255, 107, 67, 114),
                     child: const Text(
                       'نادي الصقر السعودي @2023',
                       style: TextStyle(

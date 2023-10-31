@@ -8,7 +8,8 @@ class SocialMediaPage extends StatelessWidget {
   final String facebookUrl;
   final String instagramUrl;
 
-  SocialMediaPage({
+  const SocialMediaPage({
+    super.key,
     required this.imgUrl,
     required this.text,
     required this.whatsappUrl,
@@ -18,7 +19,10 @@ class SocialMediaPage extends StatelessWidget {
 
   void _launchURL(String url) async {
     if (await canLaunch(url)) {
-      await launch(url);
+      await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
     } else {
       throw 'Could not launch $url';
     }
@@ -28,7 +32,7 @@ class SocialMediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Social Media Page'),
+        title: const Text('Social Media Page'),
       ),
       body: Center(
         child: Column(
@@ -39,23 +43,23 @@ class SocialMediaPage extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               text,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => _launchURL(whatsappUrl),
-              child: Text('WhatsApp'),
+              child: const Text('WhatsApp'),
             ),
             ElevatedButton(
               onPressed: () => _launchURL(facebookUrl),
-              child: Text('Facebook'),
+              child: const Text('Facebook'),
             ),
             ElevatedButton(
               onPressed: () => _launchURL(instagramUrl),
-              child: Text('Instagram'),
+              child: const Text('Instagram'),
             ),
           ],
         ),

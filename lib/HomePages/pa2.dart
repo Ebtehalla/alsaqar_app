@@ -17,7 +17,7 @@ class pagevisit extends StatelessWidget {
             child: Image.asset('assets/Alsaaqerclub.jpg'),
           )
         ],
-        backgroundColor: Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -208,7 +208,7 @@ class pagevisit extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(
+                    backgroundColor: const Color.fromARGB(
                         255, 55, 122, 58), // Set the desired color here
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(

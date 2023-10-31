@@ -19,7 +19,7 @@ class _mangarmmState extends State<mangarmm> {
 
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 49, 140, 41),
+              color: const Color.fromARGB(255, 49, 140, 41),
               borderRadius: BorderRadius.circular(60),
               boxShadow: [
                 BoxShadow(
