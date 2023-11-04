@@ -14,12 +14,7 @@ class Emploeeykey extends StatefulWidget {
 class _EmploeeykeyState extends State<Emploeeykey> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         drawer: MyDrawer(),
         appBar: AppBar(
           title: const Text(' الوظائف  '),
@@ -79,7 +74,20 @@ class _EmploeeykeyState extends State<Emploeeykey> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
+                      bool sent = true; // نتيجة تسليم الفورم
+                      if (sent) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("تم ارسال البيانات بنجاح")));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text("تم ارسال البيانات بنجاح")),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(
                           255, 55, 122, 58), // Set the desired color here
@@ -134,7 +142,7 @@ class _EmploeeykeyState extends State<Emploeeykey> {
             ),
           ),
         ),
-      ),
+      
     );
   }
 }

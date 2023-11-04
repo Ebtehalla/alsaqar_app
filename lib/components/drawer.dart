@@ -34,8 +34,8 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: SafeArea(
+    return SafeArea(
+      child: Drawer(
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -56,11 +56,14 @@ class _MyDrawerState extends State<MyDrawer> {
                       ],
                     ),
                   ),
-                  Center(
-                    child: Image.asset(
-                      'assets/Alsaaqerclub.jpg',
-                      height: MediaQuery.of(context).size.width * 0.3,
-                      fit: BoxFit.contain,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/Alsaaqerclub.jpg',
+                        height: MediaQuery.of(context).size.width * 0.3,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   )
                 ],
@@ -71,39 +74,50 @@ class _MyDrawerState extends State<MyDrawer> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    myExpandedWidget(
-                      context,
-                      'الرئيسية',
-                      [
-                        GestureDetector(
-                          onTap: () => navigateToKey(context, widget.keys, 0),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const Text('اللاعبين'),
-                                const SizedBox(height: 12),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => const OrgStrctureScreeen());
-                                  },
-                                  child: const Text('الهيكل التنظيمي'),
+                    widget.keys != null
+                        ? myExpandedWidget(
+                            context,
+                            'الرئيسية',
+                            [
+                              GestureDetector(
+                                onTap: () =>
+                                    navigateToKey(context, widget.keys, 0),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      const Text('اللاعبين'),
+                                      const SizedBox(height: 12),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.to(
+                                              () => const OrgStrctureScreeen());
+                                        },
+                                        child: const Text('الهيكل التنظيمي'),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      GestureDetector(
+                                        onTap: () => navigateToKey(
+                                            context, widget.keys, 2),
+                                        child: const Text('المباراة القادمة'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(height: 12),
-                                GestureDetector(
-                                  onTap: () =>
-                                      navigateToKey(context, widget.keys, 2),
-                                  child: const Text('المباراة القادمة'),
-                                ),
-                              ],
+                              ),
+                            ],
+                            EneftyIcons.home_outline,
+                          )
+                        : const MyListTile(
+                            title: ' الرئيسية ',
+                            icon: EneftyIcons.home_outline,
+                            screenName: HomePage(
+                              title: 'نادي الصقر',
+                              imagePath: '',
                             ),
                           ),
-                        ),
-                      ],
-                      EneftyIcons.home_outline,
-                    ),
                     const SizedBox(height: 20),
                     const MyListTile(
                       title: ' نبذة التاريخية ',
@@ -153,7 +167,8 @@ class _MyDrawerState extends State<MyDrawer> {
                           title: "التقرير السنوي",
                           icon: Icons.format_list_bulleted,
                           screenName: PdfScreen(
-                            pdf: "https://alsaqerfc.sa/site/annulreport.pdf",
+                            pdf:
+                                "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/%E2%80%8E%E2%81%A8%D8%A7%D9%84%D8%AA%D9%82%D8%B1%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%E2%81%A9.pdf?alt=media&token=8a2d4867-4c65-4e1e-bc42-ad3d84699929&_gl=1*j2d53l*_ga*OTQ2NzAzNTcyLjE2OTkwOTY0MTI.*_ga_CW55HF8NVT*MTY5OTA5NjQxMS4xLjEuMTY5OTA5NzExMS4yMC4wLjA",
                             title: "التقرير السنوي",
                           ),
                         ),
@@ -292,7 +307,7 @@ class MyListTile extends StatelessWidget {
             color: Colors.black54,
             size: 20,
           ),
-        ],
+        ].reversed.toList(),
       ),
     );
   }
@@ -315,6 +330,7 @@ Widget myExpandedWidget(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+
             Text(
               title,
               style: const TextStyle(
@@ -327,8 +343,7 @@ Widget myExpandedWidget(
               color: Colors.black54,
               size: 20,
             ),
-            const SizedBox(width: 8),
-          ],
+          ].reversed.toList(),
         ),
       ),
     ),

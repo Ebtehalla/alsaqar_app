@@ -11,9 +11,7 @@ class Problem extends StatefulWidget {
 class _ProblemState extends State<Problem> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: const Text('التواصل'),
           actions: [
@@ -88,7 +86,16 @@ class _ProblemState extends State<Problem> {
                 height: 16,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {     // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
+                bool sent = true; // نتيجة تسليم الفورم
+                if (sent) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("تم ارسال البيانات بنجاح")));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("تم ارسال البيانات بنجاح")),
+                  );
+                }},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(
                       255, 55, 122, 58), // Set the desired color here
@@ -103,7 +110,7 @@ class _ProblemState extends State<Problem> {
             ],
           ),
         ),
-      ),
+   
     );
   }
 }
