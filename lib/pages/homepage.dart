@@ -70,7 +70,6 @@ class _HomePageState extends State<HomePage> {
                     child: Center(
                       child: Container(
                         alignment: Alignment.centerRight,
-                        // تحديد لون النص ه
                         child: const Footer(),
                       ),
                     ),

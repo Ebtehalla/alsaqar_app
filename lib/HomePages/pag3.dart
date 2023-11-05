@@ -5,7 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 class PageEmplo extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
-  PageEmplo({Key? key}) : super(key: key);
+  PageEmplo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +189,19 @@ class PageEmplo extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
+                    bool sent = true; // نتيجة تسليم الفورم
+                    if (sent) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("تم ارسال البيانات بنجاح")));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text("تم ارسال البيانات بنجاح")),
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(
                         255, 55, 122, 58), // Set the desired color here
