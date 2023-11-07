@@ -1,12 +1,14 @@
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/models/Audience_poll_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:uuid/uuid.dart';
 
 class SurveyScreen extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   SurveyScreen({super.key});
-
+List<OpinionPoll> opinions =[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +59,11 @@ class SurveyScreen extends StatelessWidget {
                   options: const [
                     FormBuilderFieldOption(value: 'ذكر'),
                     FormBuilderFieldOption(value: 'أنثى')
+                    
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(id:1, question: "'1. الجنس'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -76,6 +82,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'من 30 إلى أقل من 50 سنة'),
                     FormBuilderFieldOption(value: 'من 50 سنة فأعلى')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:2, question: " '2. العمر'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -93,6 +102,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'خارج منطقة القصيم'),
                     FormBuilderFieldOption(value: 'خارج المملكة')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:3, question: " '3. مكان الإقامة الحالي'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -113,6 +125,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:4, question: " '4. يقوم النادي بتسويق المباريات عبر وسائل التواصل الاجتماعي والأماكن العامة'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -133,6 +148,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:5, question: "'5. الأنشطة التسويقية التي يقوم بها النادي لجذب الجماهير لحضور المباريات كافية' ", selection: newValue??""));
+},
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -153,6 +171,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:6, question: "'6. ما مدى رضاك عن تنظيم المباراة من حيث (تنظيم دخول وخروج الجماهير - توزيع المنظمين داخل المدرجات - توفر اللوحات الارشادية)' ", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -173,6 +194,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+opinions.add(OpinionPoll(id:7, question: " '7.يلتزم النادي بمعايير الأمان .'", selection: newValue??""));
+},
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -193,6 +217,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:8, question: "'8. يستهدف النادي فئات مختلفة من المجتمع عند إقامة الأنشطة الترفيهية والفعاليات' ", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -213,6 +240,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+opinions.add(OpinionPoll(id:9, question: "'9. تنوع الأطعمة والمشروبات المقدمة من النادي خلال الأنشطة والفعاليات' ", selection: newValue??""));
+},
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -232,6 +262,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+opinions.add(OpinionPoll(id:10, question: "'10. وسائل التواصل الاجتماعي تغطي أحداث مباريات النادي' ", selection: newValue??""));
+},
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -250,6 +283,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'لا'),
                     FormBuilderFieldOption(value: 'لا أعلم')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:11, question: " '11. يستخدم النادي الموقع الإلكتروني الرسمي في الإعلان عن المباريات القادمة'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -269,6 +305,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'مقبول'),
                     FormBuilderFieldOption(value: 'ضعيف')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:12, question: "'12. ما مدى رضاك عن مستوى أداء اللاعبين المحليين في المباراتين السابقتين'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -288,6 +327,9 @@ class SurveyScreen extends StatelessWidget {
                     FormBuilderFieldOption(value: 'مقبول'),
                     FormBuilderFieldOption(value: 'ضعيف')
                   ],
+                  onSaved: (newValue) {
+                  opinions.add(OpinionPoll(id:13, question: " '13. ما مدى رضاك عن مستوى أداء الجهاز الفني والإداري للفريق الأول في المباراتين السابقتين'", selection: newValue??""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -311,7 +353,9 @@ class SurveyScreen extends StatelessWidget {
                   onPressed: () {
                     // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
                     bool sent = true; // نتيجة تسليم الفورم
-                    if (sent) {
+
+                    if (   _formKey.currentState?.saveAndValidate()??false) {
+                      print(opinions);
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text("تم ارسال البيانات بنجاح")));
                     } else {
@@ -320,6 +364,7 @@ class SurveyScreen extends StatelessWidget {
                             content: Text("تم ارسال البيانات بنجاح")),
                       );
                     }
+
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(
@@ -331,7 +376,8 @@ class SurveyScreen extends StatelessWidget {
                     textStyle: const TextStyle(
                         fontSize: 18), // Adjust the font size here
                   ),
-                  child: const Text('إرسال'),
+
+                  child: const Center(child: Text('إرسال')),
                 ),
                 const SizedBox(height: 16),
               ],

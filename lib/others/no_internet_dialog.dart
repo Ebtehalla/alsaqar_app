@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class NoInternetDialog extends StatelessWidget {
   final bool canDismiss;
 
-  const NoInternetDialog({Key? key, this.canDismiss = false}) : super(key: key);
+  const NoInternetDialog({super.key, this.canDismiss = false});
 
   @override
   Widget build(BuildContext context) {

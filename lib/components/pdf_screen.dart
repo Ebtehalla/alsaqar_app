@@ -14,10 +14,10 @@ import 'package:alsagr_app/components/drawer.dart';
 
 class PdfScreen extends StatefulWidget {
   const PdfScreen({
-    Key? key,
+    super.key,
     required this.pdf,
     required this.title,
-  }) : super(key: key);
+  });
   final String pdf;
   final String title;
 

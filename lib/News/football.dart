@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Football extends StatefulWidget {
-  const Football({Key? key}) : super(key: key);
+  const Football({super.key});
 
   @override
   State<Football> createState() => _FootballState();

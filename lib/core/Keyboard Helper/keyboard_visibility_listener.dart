@@ -9,10 +9,10 @@ class KeyboardVisibilityListener extends StatefulWidget {
   ) listener;
 
   const KeyboardVisibilityListener({
-    Key? key,
+    super.key,
     required this.child,
     required this.listener,
-  }) : super(key: key);
+  });
 
   @override
   _KeyboardVisibilityListenerState createState() =>

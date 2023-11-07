@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class Mangarmm extends StatefulWidget {
-  const Mangarmm({Key? key}) : super(key: key);
+  const Mangarmm({super.key});
 
   @override
   State<Mangarmm> createState() => _MangarmmState();

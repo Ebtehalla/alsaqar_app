@@ -19,8 +19,8 @@ class AppCashedImage extends StatelessWidget {
     this.borderColor,
     this.borderWidth,
     this.isCircular = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

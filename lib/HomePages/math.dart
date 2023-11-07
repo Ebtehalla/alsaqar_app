@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../components/network_image.dart';
 
 class Mathsport extends StatefulWidget {
-  const Mathsport({Key? key}) : super(key: key);
+  const Mathsport({super.key});
 
   @override
   State<Mathsport> createState() => _MathsportState();

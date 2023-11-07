@@ -305,11 +305,11 @@ class MailAppPickerDialog extends StatelessWidget {
   final EmailContent? emailContent;
 
   const MailAppPickerDialog({
-    Key? key,
+    super.key,
     this.title = 'Choose Mail App',
     required this.mailApps,
     this.emailContent,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

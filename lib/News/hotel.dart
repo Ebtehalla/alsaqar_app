@@ -24,7 +24,7 @@ class FirebaseApi {
 }
 
 class Hotel extends StatefulWidget {
-  const Hotel({Key? key}) : super(key: key);
+  const Hotel({super.key});
 
   @override
   State<Hotel> createState() => _HotelState();

@@ -7,7 +7,7 @@ import '../components/network_image.dart';
 import '../models/news_model.dart';
 
 class ImageHeadr extends StatefulWidget {
-  const ImageHeadr({Key? key}) : super(key: key);
+  const ImageHeadr({super.key});
 
   @override
   State<ImageHeadr> createState() => _ImageHeadrState();

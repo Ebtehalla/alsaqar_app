@@ -1,6 +1,6 @@
 class Validator {
   static String? validateName(String? value) {
-    if (value!.isEmpty || value.length < 5) {
+    if (value!.isEmpty || value.isEmpty) {
       return "لا يجب أن يكون الاسم فارغ";
     }
     return null;
@@ -15,7 +15,7 @@ class Validator {
 
   static String? validateMobile(String? value) {
     String pattern = r'(^[0-9]*$)';
-    RegExp regExp = RegExp(pattern);
+    RegExp regExp = RegExp(pattern);    
     if (value!.isEmpty) {
       return "يجب ألا يكون الهاتف فارغ";
     } else if (value.length != 10) {

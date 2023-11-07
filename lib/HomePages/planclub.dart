@@ -5,7 +5,7 @@ import 'package:alsagr_app/components/drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PlanClub extends StatefulWidget {
-  const PlanClub({Key? key}) : super(key: key);
+  const PlanClub({super.key});
 
   @override
   State<PlanClub> createState() => _PlanClubState();

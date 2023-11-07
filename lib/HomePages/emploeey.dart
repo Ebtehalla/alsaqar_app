@@ -1,8 +1,18 @@
-import 'dart:developer';
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:io';
 
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/data_sources/emploeey_apis.dart';
+import 'package:alsagr_app/pages/homepage.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+
+import '../core/extensions/validator.dart';
+import '../firebase_helper.dart';
+import '../models/emploeey_model.dart';
 
 class Emploeeykey extends StatefulWidget {
   const Emploeeykey({super.key});
@@ -12,6 +22,52 @@ class Emploeeykey extends StatefulWidget {
 }
 
 class _EmploeeykeyState extends State<Emploeeykey> {
+  var fullNameController = TextEditingController();
+  var idNumberController = TextEditingController();
+  var phoneNumberController = TextEditingController();
+  var ageController = TextEditingController();
+  File? cvFile;
+  GlobalKey<FormState> emploeeyFormKey = GlobalKey<FormState>();
+  Future emploeeykey({
+    required String name,
+    required String email,
+    required String phone,
+    required String age,
+  }) async {
+    BotToast.showLoading();
+    var imageUrl = await FirebaseStorageHelper.uploadFileToFirebaseStorage(
+        file: cvFile!, uid: name, collection: email);
+    bool? res = await EmploeeyApis.addMessageToFirestore(
+      EmploeeyModel(
+        email: email,
+        name: name,
+        phone: phone,
+        age: age,
+        cv: imageUrl ?? "",
+      ),
+    );
+    if (res) {
+      BotToast.closeAllLoading();
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(
+              title: 'نادي الصقر',
+              imagePath: '',
+            ),
+          ));
+      BotToast.showText(
+        text: "تم إرسال رسالتك بنجاح سيتم التواصل معك قريبا",
+      );
+    } else {
+      BotToast.closeAllLoading();
+
+      BotToast.showText(
+        text: "حدث خطأ اثناء إرسال رسالتك حاول مرة اخري",
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -38,106 +94,126 @@ class _EmploeeykeyState extends State<Emploeeykey> {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    ' وظائف شاغرة',
-                    style: TextStyle(fontSize: 24),
-                  ),
-
-                  // Image.asset(
-                  //   'assets/emploe.jpg', // Replace with the path to your image
-                  //   width: 500,
-                  //   height: 400,
-                  // ),
-                  const SizedBox(height: 40),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'الاسم الثلاثي',
+              child: Form(
+                key: emploeeyFormKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      ' وظائف شاغرة',
+                      style: TextStyle(fontSize: 24),
                     ),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'رقم الهوية',
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      'assets/emploe.jpg', // Replace with the path to your image
+                      width: 500,
+                      height: 400,
                     ),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'رقم الجوال',
+                    const SizedBox(height: 40),
+                    TextFormField(
+                      controller: fullNameController,
+                      validator: Validator.validateName,
+                      decoration: const InputDecoration(
+                        labelText: 'الأسم الثلاثي',
+                      ),
                     ),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'العمر',
+                    TextFormField(
+                      controller: idNumberController,
+                      keyboardType: TextInputType.number, 
+                      validator: Validator.validateName,
+                      decoration: const InputDecoration(
+                        labelText: 'رقم الهوية ',
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
-                      bool sent = true; // نتيجة تسليم الفورم
-                      if (sent) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("تم ارسال البيانات بنجاح")));
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text("تم ارسال البيانات بنجاح")),
+                    TextFormField(
+                      controller: phoneNumberController,
+                      keyboardType: TextInputType.number,
+                      validator: Validator.validateName,
+                      decoration: const InputDecoration(
+                        labelText: ' رقم الجوال',
+                      ),
+                    ),
+                    TextFormField(
+                      controller: ageController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      validator: (value) {
+                        if (value?.isEmpty ?? false) {
+                          return "لا يجب ان يكون العمر فارغا";
+                        }
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: ' العمر',
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (emploeeyFormKey.currentState!.validate() &&
+                            cvFile != null) {
+                          emploeeykey(
+                            name: fullNameController.text,
+                            email: idNumberController.text,
+                            phone: phoneNumberController.text,
+                            age: ageController.text,
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(
+                            255, 55, 122, 58), // Set the desired color here
+                        shape: const StadiumBorder(),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16,
+                            horizontal: 20), // Adjust the padding here
+                        textStyle: const TextStyle(
+                            fontSize: 18), // Adjust the font size here
+                      ),
+                      child: const Text('إرسال'),
+                    ),
+                    const SizedBox(height: 20),
+                    TextButton(
+                      onPressed: () async {
+                        FilePickerResult? result =
+                            await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['pdf', 'doc', 'docx'],
                         );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(
-                          255, 55, 122, 58), // Set the desired color here
-                      shape: const StadiumBorder(),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 20), // Adjust the padding here
-                      textStyle: const TextStyle(
-                          fontSize: 18), // Adjust the font size here
-                    ),
-                    child: const Text('إرسال'),
-                  ),
-                  const SizedBox(height: 20),
-                  TextButton(
-                    onPressed: () async {
-                      FilePickerResult? result =
-                          await FilePicker.platform.pickFiles(
-                        type: FileType.custom,
-                        allowedExtensions: ['pdf', 'doc', 'docx'],
-                      );
+                        if (result != null) {
+                          PlatformFile file = result.files.first;
+                          String filePath = file.path!;
 
-                      if (result != null) {
-                        PlatformFile file = result.files.first;
-                        String filePath = file.path!;
-                        // Add your custom code here to handle the selected resume file
-                        log('Selected resume file: $filePath');
-                      } else {
-                        // User canceled the file picking
-                        log('File picking canceled.');
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(
-                          8.0), // Adjust the padding value as needed
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Adjust the border radius as needed
-                        child: const Text(
-                          'إضافة ملف السيرة الذاتية',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 24, 90, 57),
-                            fontSize: 16.0,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                          setState(() {
+                            cvFile = File(filePath);
+                          });
+                        } else {
+                          // User canceled the file picking
+                          print('File picking canceled.');
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(
+                            8.0), // Adjust the padding value as needed
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                              8.0), // Adjust the border radius as needed
+                          child: const Text(
+                            'إضافة ملف السيرة الذاتية',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              backgroundColor: Color.fromARGB(255, 24, 90, 57),
+                              fontSize: 16.0,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
