@@ -1,66 +1,45 @@
-import 'dart:convert';
-class OpinionPoll {
-  final int id;
-  final String question;
-  final List<String> options;
-  final String selection;
-  
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
-  OpinionPoll( {
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
+import 'opinion_poll_model.dart';
+
+class AudiancePoll {
+  List<OpinionPoll> polls ;
+  String message;
+  String id;
+  AudiancePoll({
+    required this.polls,
+    required this.message,
     required this.id,
-    required this.question,
-     this.options= const [],
-    this.selection ="",
-    
   });
-    OpinionPoll copyWith({
-    int? id,
-    String? question,
-    List<String>? options,
-  }) {
-    return OpinionPoll(
-      id: id ?? this.id,
-      question: question ?? this.question,
-      options: options ?? this.options,
-    );
-  }
-    Map<String, dynamic> toMap() {
+
+
+  Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'polls': polls.map((x) => x.toMap()).toList(),
+      'message': message,
       'id': id,
-      'question': question,
-      'options': options,
     };
   }
 
-   factory OpinionPoll.fromMap(Map<String, dynamic> map) {
-   return OpinionPoll(
-     id: map['id'] as int,
-     question: map['question'] as String,
-     options: map['options']! as List<String>,
-   );
- }
-  String toJson() => json.encode(toMap());
- factory OpinionPoll.fromJson(String source) =>
-     OpinionPoll.fromMap(json.decode(source) as Map<String, dynamic>);
- @override
- String toString() {
-   return 'OpinionPoll(id: $id, question: $question, options: $options)';
- }
- @override
- bool operator ==(covariant OpinionPoll other) {
-   if (identical(this, other)) return true;
- 
+
+
+  @override
+  String toString() => 'AudiancePoll(polls: $polls, message: $message, id: $id)';
+
+  @override
+  bool operator ==(covariant AudiancePoll other) {
+    if (identical(this, other)) return true;
+  
     return 
-      other.id == id &&
-      other.question == question &&
-      other.options == options ;
- 
+      listEquals(other.polls, polls) &&
+      other.message == message &&
+      other.id == id;
   }
 
   @override
-  int get hashCode {
-    return id.hashCode ^
-      question.hashCode ^
-      options.hashCode;
-  }
+  int get hashCode => polls.hashCode ^ message.hashCode ^ id.hashCode;
 }

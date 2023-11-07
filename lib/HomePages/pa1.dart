@@ -1,5 +1,9 @@
 import 'package:alsagr_app/components/drawer.dart';
-import 'package:alsagr_app/models/Audience_poll_model.dart';
+import 'package:alsagr_app/data_sources/audience_poll_apis.dart';
+
+import 'package:alsagr_app/models/audience_poll_model.dart';
+import 'package:alsagr_app/models/opinion_poll_model.dart';
+import 'package:alsagr_app/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:uuid/uuid.dart';
@@ -306,6 +310,7 @@ opinions.add(OpinionPoll(id:10, question: "'10. وسائل التواصل الا
                     FormBuilderFieldOption(value: 'ضعيف')
                   ],
                   onSaved: (newValue) {
+                  _formKey.currentState?.fields['12. ما مدى رضاك عن مستوى أداء اللاعبين المحليين في المباراتين السابقتين']?.didChange(newValue);
                   opinions.add(OpinionPoll(id:12, question: "'12. ما مدى رضاك عن مستوى أداء اللاعبين المحليين في المباراتين السابقتين'", selection: newValue??""));
                   },
                 ),
@@ -350,14 +355,20 @@ opinions.add(OpinionPoll(id:10, question: "'10. وسائل التواصل الا
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: ()async {
                     // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
                     bool sent = true; // نتيجة تسليم الفورم
-
+                    _formKey.currentState?.save();
                     if (   _formKey.currentState?.saveAndValidate()??false) {
                       print(opinions);
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      final AudiancePoll audiancePoll =  AudiancePoll(id : const Uuid().v8(),polls: opinions, message: "");
+                    await  AudiencePollApis.addMessageToFirestore(audiancePoll).then((value) {
+                        opinions.clear();
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage(title: "", imagePath: ""),));
+                      return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text("تم ارسال البيانات بنجاح")));
+                    });
+                
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

@@ -1,12 +1,18 @@
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/models/audience_poll_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:uuid/uuid.dart';
+
+import '../data_sources/audience_poll_apis.dart';
+import '../models/opinion_poll_model.dart';
+import '../pages/homepage.dart';
 
 class PageVisit extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   PageVisit({super.key});
-
+  List<OpinionPoll> opinions = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +64,12 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'ذكر '),
                     FormBuilderFieldOption(value: ' انثى'),
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 1,
+                        question: "'1. الجنس'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -76,6 +88,12 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'من 30 إلى أقل من 50 سنة'),
                     FormBuilderFieldOption(value: 'من 50 سنة فأعلى')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 2,
+                        question: " '2. العمر'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -95,6 +113,13 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 3,
+                        question:
+                            " '3. أعمال الصيانة بمنشأة النادي واضحة للزوار'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -115,6 +140,12 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 4,
+                        question: "'4. الانطباع العام عن الزيارة'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -135,6 +166,12 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 5,
+                        question: "'5. يوجد بمنشأة النادي مصلى مناسب'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -155,6 +192,12 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 6,
+                        question: "'6.  موقع النادي مناسب للزوار'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -174,6 +217,13 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 7,
+                        question:
+                            "'7. يلتزم النادي بمعايير الأمانا آسف و لكن ليس لدي توجه نحو لغة معينة. إذا كنت تحتاج إلى مساعدة بخصوص شيء معين، يسعدني أن أساعدك.'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -194,6 +244,13 @@ class PageVisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 8,
+                        question:
+                            "'8.اللوحات الإرشادية ووسائل السلامة متوفرة بصورة كافية'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -206,12 +263,24 @@ class PageVisit extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
                     bool sent = true; // نتيجة تسليم الفورم
-                    if (sent) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text("تم ارسال البيانات بنجاح")));
+                    _formKey.currentState?.save();
+                    if (_formKey.currentState?.saveAndValidate() ?? false) {
+                      print(opinions);
+                      final AudiancePoll audiancePoll = AudiancePoll(
+                          id: const Uuid().v8(), polls: opinions, message: "");
+                      await VistorsPollApis.addMessageToFirestore(audiancePoll).then((value) {
+                        opinions.clear();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) =>
+                              const HomePage(title: "", imagePath: ""),
+                        ));
+                        return ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("تم ارسال البيانات بنجاح")));
+                      });
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

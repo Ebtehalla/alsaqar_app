@@ -1,12 +1,18 @@
 import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:uuid/uuid.dart';
+
+import '../data_sources/audience_poll_apis.dart';
+import '../models/audience_poll_model.dart';
+import '../models/opinion_poll_model.dart';
+import '../pages/homepage.dart';
 
 class PageEmplo extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   PageEmplo({super.key});
-
+  List<OpinionPoll> opinions = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +57,12 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'ذكر '),
                     FormBuilderFieldOption(value: ' انثى'),
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 1,
+                        question: "'1. الجنس'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -70,6 +82,13 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 2,
+                        question:
+                            "''2. الوصف الوظيفي للإدارات بالهيكل التنظيمي سهل وواضح'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -89,6 +108,13 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 3,
+                        question:
+                            "'3.يقوم النادي بتقدير الموظفين المميزين والمبدعين على كافة المستويات وفقاً لنظام مكافآت عادل ومعلن'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -109,6 +135,13 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 4,
+                        question:
+                            "'4. يُطبق النادي نظام تقييم أداء عادل ويُقدم التغذية الراجعة للموظفين '",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -129,6 +162,13 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 5,
+                        question:
+                            "'5.ينظم النادي فعاليات اجتماعية للموظفين  لتعزيز الترابط بينهم'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -149,6 +189,13 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 6,
+                        question:
+                            "'6.  يعمل النادي على إقامة برنامج للتعريف بأنظمة ولوائح النادي والوزارة للموظفين الجدد بصفة دورية'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -168,6 +215,12 @@ class PageEmplo extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 7,
+                        question: " '7.يتمتع النادي بوجود بيئة صحية جاذبة'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -189,12 +242,25 @@ class PageEmplo extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
                     bool sent = true; // نتيجة تسليم الفورم
-                    if (sent) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text("تم ارسال البيانات بنجاح")));
+                    _formKey.currentState?.save();
+                    if (_formKey.currentState?.saveAndValidate() ?? false) {
+                      print(opinions);
+                      final AudiancePoll audiancePoll = AudiancePoll(
+                          id: const Uuid().v8(), polls: opinions, message: "");
+                      await EmployeesPollApis.addMessageToFirestore(audiancePoll)
+                          .then((value) {
+                        opinions.clear();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) =>
+                              const HomePage(title: "", imagePath: ""),
+                        ));
+                        return ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("تم ارسال البيانات بنجاح")));
+                      });
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
