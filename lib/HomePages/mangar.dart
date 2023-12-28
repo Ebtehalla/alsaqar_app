@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class mangarmm extends StatefulWidget {
-  const mangarmm({Key? key}) : super(key: key);
+class Mangarmm extends StatefulWidget {
+  const Mangarmm({super.key});
 
   @override
-  State<mangarmm> createState() => _mangarmmState();
+  State<Mangarmm> createState() => _MangarmmState();
 }
 
-class _mangarmmState extends State<mangarmm> {
+class _MangarmmState extends State<Mangarmm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +19,7 @@ class _mangarmmState extends State<mangarmm> {
 
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 49, 140, 41),
+              color: const Color.fromRGBO(215, 172, 78, 1.000),
               borderRadius: BorderRadius.circular(60),
               boxShadow: [
                 BoxShadow(

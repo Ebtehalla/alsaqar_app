@@ -1,5 +1,10 @@
+import 'package:alsagr_app/data_sources/news_api.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../components/network_image.dart';
+import '../models/news_model.dart';
 
 class ImageHeadr extends StatefulWidget {
   const ImageHeadr({super.key});
@@ -9,28 +14,35 @@ class ImageHeadr extends StatefulWidget {
 }
 
 class _ImageHeadrState extends State<ImageHeadr> {
-  List<String> images = [
-    'assets/img1.jpg',
-    'assets/img2.jpg',
-    'assets/img3.jpeg',
-  ];
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-      itemCount: images.length,
-      itemBuilder: (context, index, realIndex) {
-        String currentImage = images[index];
-        return Image.asset(
-          currentImage,
-          width: 900, // Set the desired width
-          height: 400, // Set the desired height
-        );
+    return FutureBuilder<List<NewsModel>?>(
+      future: getNews(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          var news = snapshot.data;
+          return CarouselSlider.builder(
+            itemCount: news?.length,
+            itemBuilder: (context, index, realIndex) {
+              var item = news?[index];
+              return AppCashedImage(
+                imageUrl: item?.img ?? "",
+                fit: BoxFit.cover,
+                width: context.width,
+              );
+            },
+            options: CarouselOptions(
+              viewportFraction: 1,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 6),
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        }
       },
-      options: CarouselOptions(
-        viewportFraction: 1,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 6),
-      ),
     );
   }
 }

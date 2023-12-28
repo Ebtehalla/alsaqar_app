@@ -1,12 +1,18 @@
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/models/audience_poll_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:uuid/uuid.dart';
 
-class pagevisit extends StatelessWidget {
+import '../data_sources/audience_poll_apis.dart';
+import '../models/opinion_poll_model.dart';
+import '../pages/homepage.dart';
+
+class PageVisit extends StatelessWidget {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
-  pagevisit({Key? key}) : super(key: key);
-
+  PageVisit({super.key});
+  List<OpinionPoll> opinions = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +20,10 @@ class pagevisit extends StatelessWidget {
         title: const Text('أستطلاع الزوار'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+            child: Image.asset('assets/1703776859895.png'),
           )
         ],
-        backgroundColor: Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -41,6 +47,7 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(215, 172, 78, 1.000),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -49,7 +56,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -58,6 +66,12 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'ذكر '),
                     FormBuilderFieldOption(value: ' انثى'),
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 1,
+                        question: "'1. الجنس'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -65,7 +79,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -76,6 +91,12 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'من 30 إلى أقل من 50 سنة'),
                     FormBuilderFieldOption(value: 'من 50 سنة فأعلى')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 2,
+                        question: " '2. العمر'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -83,7 +104,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -95,6 +117,13 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 3,
+                        question:
+                            " '3. أعمال الصيانة بمنشأة النادي واضحة للزوار'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -102,7 +131,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -115,6 +145,12 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 4,
+                        question: "'4. الانطباع العام عن الزيارة'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -122,7 +158,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -135,6 +172,12 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 5,
+                        question: "'5. يوجد بمنشأة النادي مصلى مناسب'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -142,7 +185,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -155,6 +199,12 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 6,
+                        question: "'6.  موقع النادي مناسب للزوار'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -162,7 +212,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -174,6 +225,13 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'غير راضي جداً'),
                     FormBuilderFieldOption(value: 'محايد')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 7,
+                        question:
+                            "'7. يلتزم النادي بمعايير الأمانا آسف و لكن ليس لدي توجه نحو لغة معينة. إذا كنت تحتاج إلى مساعدة بخصوص شيء معين، يسعدني أن أساعدك.'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -181,7 +239,8 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -194,6 +253,13 @@ class pagevisit extends StatelessWidget {
                     FormBuilderFieldOption(value: 'موافق'),
                     FormBuilderFieldOption(value: 'موافق بشدة')
                   ],
+                  onSaved: (newValue) {
+                    opinions.add(OpinionPoll(
+                        id: 8,
+                        question:
+                            "'8.اللوحات الإرشادية ووسائل السلامة متوفرة بصورة كافية'",
+                        selection: newValue ?? ""));
+                  },
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -201,15 +267,41 @@ class pagevisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    // call api to post information to, if success = clear fields show success msg, false show faild msg & don't clear fields
+                    bool sent = true; // نتيجة تسليم الفورم
+                    _formKey.currentState?.save();
+                    if (_formKey.currentState?.saveAndValidate() ?? false) {
+                      print(opinions);
+                      final AudiancePoll audiancePoll = AudiancePoll(
+                          id: const Uuid().v8(), polls: opinions, message: "");
+                      await VistorsPollApis.addMessageToFirestore(audiancePoll)
+                          .then((value) {
+                        opinions.clear();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) =>
+                              const HomePage(title: "", imagePath: ""),
+                        ));
+                        return ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("تم ارسال البيانات بنجاح")));
+                      });
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text("تم ارسال البيانات بنجاح")),
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(
-                        255, 55, 122, 58), // Set the desired color here
+                    backgroundColor: const Color.fromRGBO(
+                        215, 172, 78, 1.000), // Set the desired color here
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(
                         vertical: 16,
