@@ -31,7 +31,7 @@ class _MathsportState extends State<Mathsport> {
                       color: const Color.fromARGB(255, 255, 255, 255),
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                       border: Border.all(
-                        color: const Color.fromARGB(255, 164, 127, 162),
+                        color: const Color.fromRGBO(131, 40, 117, 1.000),
                         width: 2.0,
                         style: BorderStyle.none, // نمط الحافة المتقطعة
                       ),

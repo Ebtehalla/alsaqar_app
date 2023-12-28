@@ -60,7 +60,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: Image.asset(
-                        'assets/Alsaaqerclub.jpg',
+                        'assets/logotwo.jpeg',
                         height: MediaQuery.of(context).size.width * 0.3,
                         fit: BoxFit.contain,
                       ),
@@ -158,7 +158,7 @@ class _MyDrawerState extends State<MyDrawer> {
                           icon: Icons.format_list_bulleted,
                           screenName: PdfScreen(
                             pdf:
-                                "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/__%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9%20(1).pdf?alt=media&token=2eb2af27-f55a-4cc8-a37c-346f9fabc0c9&_gl=1*14x7zam*_ga*MTA5MjI0NDU4LjE2Nzk5MDg4MzY.*_ga_CW55HF8NVT*MTY5NzA5OTc5Ny4xNTcuMS4xNjk3MDk5ODI1LjMyLjAuMA..",
+                                "https://firebasestorage.googleapis.com/v0/b/alsaqar-566d3.appspot.com/o/%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%D8%A9.pdf?alt=media&token=d3ccf571-d802-4795-b22f-16c3fd7d10f7",
                             title: 'وثيقة الخطة الإستراتيجية',
                           ),
                         ),
@@ -330,7 +330,6 @@ Widget myExpandedWidget(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
             Text(
               title,
               style: const TextStyle(

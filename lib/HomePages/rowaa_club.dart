@@ -20,10 +20,10 @@ class _roawwaclubState extends State<roawaacl> {
         title: const Text('نبذة عن نادي الصقر'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+            child: Image.asset('assets/1703776859895.png'),
           )
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(

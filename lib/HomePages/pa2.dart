@@ -20,10 +20,10 @@ class PageVisit extends StatelessWidget {
         title: const Text('أستطلاع الزوار'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+            child: Image.asset('assets/1703776859895.png'),
           )
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -47,6 +47,7 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(215, 172, 78, 1.000),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -55,7 +56,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -77,7 +79,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -101,7 +104,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -127,7 +131,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -153,7 +158,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -179,7 +185,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -205,7 +212,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -231,7 +239,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -258,7 +267,8 @@ class PageVisit extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -271,7 +281,8 @@ class PageVisit extends StatelessWidget {
                       print(opinions);
                       final AudiancePoll audiancePoll = AudiancePoll(
                           id: const Uuid().v8(), polls: opinions, message: "");
-                      await VistorsPollApis.addMessageToFirestore(audiancePoll).then((value) {
+                      await VistorsPollApis.addMessageToFirestore(audiancePoll)
+                          .then((value) {
                         opinions.clear();
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) =>
@@ -289,8 +300,8 @@ class PageVisit extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(
-                        255, 55, 122, 58), // Set the desired color here
+                    backgroundColor: const Color.fromRGBO(
+                        215, 172, 78, 1.000), // Set the desired color here
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(
                         vertical: 16,

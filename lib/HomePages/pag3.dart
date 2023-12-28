@@ -20,10 +20,10 @@ class PageEmplo extends StatelessWidget {
         title: const Text('أستطلاع الموظفين'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+            child: Image.asset('assets/1703776859895.png'),
           )
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -48,7 +48,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -70,7 +71,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -96,7 +98,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -122,7 +125,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -149,7 +153,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -176,7 +181,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -203,7 +209,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 FormBuilderRadioGroup(
@@ -228,7 +235,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -237,7 +245,8 @@ class PageEmplo extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 17, // تحديد حجم النص هنا
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 27, 94, 32), // تحديد لون النص ه
+                    color:
+                        Color.fromRGBO(131, 40, 117, 1.000), // تحديد لون النص ه
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -250,7 +259,8 @@ class PageEmplo extends StatelessWidget {
                       print(opinions);
                       final AudiancePoll audiancePoll = AudiancePoll(
                           id: const Uuid().v8(), polls: opinions, message: "");
-                      await EmployeesPollApis.addMessageToFirestore(audiancePoll)
+                      await EmployeesPollApis.addMessageToFirestore(
+                              audiancePoll)
                           .then((value) {
                         opinions.clear();
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -269,8 +279,8 @@ class PageEmplo extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(
-                        255, 55, 122, 58), // Set the desired color here
+                    backgroundColor: const Color.fromRGBO(
+                        215, 172, 78, 1.000), // Set the desired color here
                     shape: const StadiumBorder(),
                     padding: const EdgeInsets.symmetric(
                         vertical: 16,

@@ -16,12 +16,12 @@ class Problem extends StatefulWidget {
 }
 
 class _ProblemState extends State<Problem> {
-   var fullNameController = TextEditingController();
+  var fullNameController = TextEditingController();
   var subjectController = TextEditingController();
   var messageController = TextEditingController();
-  var  TypeOfRequestController= TextEditingController();
+  var TypeOfRequestController = TextEditingController();
   GlobalKey<FormState> suggestFormKey = GlobalKey<FormState>();
- 
+
   void _openSocialMedia(String url) async {
     if (await canLaunchUrl(
       Uri.parse(url),
@@ -34,12 +34,12 @@ class _ProblemState extends State<Problem> {
       throw 'Could not launch $url';
     }
   }
+
   Future suggest({
     required String name,
     required String subject,
     required String message,
     required String TypeOfRequest,
-    
   }) async {
     bool? res = await SuggestApis.addMessageToFirestore(
       SuggestModel(
@@ -47,10 +47,9 @@ class _ProblemState extends State<Problem> {
         subject: subject,
         message: message,
         TypeOfRequest: TypeOfRequest,
-         
       ),
     );
-        if (res) {
+    if (res) {
       BotToast.closeAllLoading();
       Navigator.push(
           context,
@@ -71,118 +70,118 @@ class _ProblemState extends State<Problem> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: const Text('التواصل'),
-          actions: [
-            ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
-            )
-          ],
-          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
-          centerTitle: true,
-          toolbarHeight: 60,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('البلاغات والشكاوي'),
+        actions: [
+          ClipOval(
+            child: Image.asset('assets/1703776859895.png'),
+          )
+        ],
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
+        centerTitle: true,
+        toolbarHeight: 60,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
           ),
         ),
-        drawer: MyDrawer(),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: suggestFormKey,
-            child: Column(
-              children: [
-                const Text(
-                  'الشكاوي والأقتراحات',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w300,
+      ),
+      drawer: MyDrawer(),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: suggestFormKey,
+          child: Column(
+            children: [
+              const Text(
+                'الشكاوي والأقتراحات',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: fullNameController,
+                validator: Validator.validateName,
+                decoration: InputDecoration(
+                  hintText: 'أدخل  اسمك',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        20), // Set the desired border radius here
                   ),
                 ),
-                const SizedBox(height: 16),
-                 TextFormField(
-                    controller: fullNameController,
-                    validator: Validator.validateName,
-                    decoration: InputDecoration(
-                      hintText: 'أدخل  اسمك',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Set the desired border radius here
-                      ),
-                    ),
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: subjectController,
+                validator: Validator.validateEmpty,
+                decoration: InputDecoration(
+                  hintText: '  الموضوع',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        20), // Set the desired border radius here
                   ),
-                const SizedBox(height: 16),
-                 TextFormField(
-                    controller: subjectController,
-                    validator: Validator.validateEmpty,
-                    decoration: InputDecoration(
-                      hintText: '  الموضوع',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Set the desired border radius here
-                      ),
-                    ),
-                  ),
-                const SizedBox(height: 16),
-                 TextFormField(
-                    controller: TypeOfRequestController,
-                    validator: Validator.validateEmpty,
-                    decoration: InputDecoration(
-                      hintText: '  نوع الطلب',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Set the desired border radius here
-                      ),
-                    ),
-                  ),
-                const SizedBox(height: 26),
-                 TextFormField(
-                    controller: messageController,
-                    validator: Validator.validateEmpty,
-                    decoration: InputDecoration(
-                      hintText: '  رسالتك',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Set the desired border radius here
-                      ),
-                    ),
-                  ),
-                const SizedBox(
-                  height: 16,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (suggestFormKey.currentState!.validate()) {
-                        suggest(
-                          name: fullNameController.text,
-                          subject: subjectController.text,
-                          TypeOfRequest: TypeOfRequestController.text,
-                          message: messageController.text,
-                        );
-                      }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(
-                        255, 55, 122, 58), // Set the desired color here
-                    shape: const StadiumBorder(),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 16, horizontal: 20), // Adjust the padding here
-                    textStyle: const TextStyle(
-                        fontSize: 18), // Adjust the font size here
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: TypeOfRequestController,
+                validator: Validator.validateEmpty,
+                decoration: InputDecoration(
+                  hintText: '  نوع الطلب',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        20), // Set the desired border radius here
                   ),
-                  child: const Text('إرسال'),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 26),
+              TextFormField(
+                controller: messageController,
+                validator: Validator.validateEmpty,
+                decoration: InputDecoration(
+                  hintText: '  رسالتك',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        20), // Set the desired border radius here
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (suggestFormKey.currentState!.validate()) {
+                    suggest(
+                      name: fullNameController.text,
+                      subject: subjectController.text,
+                      TypeOfRequest: TypeOfRequestController.text,
+                      message: messageController.text,
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(
+                      215, 172, 78, 1.000), // Set the desired color here
+                  shape: const StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16, horizontal: 20), // Adjust the padding here
+                  textStyle: const TextStyle(
+                      fontSize: 18), // Adjust the font size here
+                ),
+                child: const Text('إرسال'),
+              ),
+            ],
           ),
         ),
-   
+      ),
     );
   }
 }

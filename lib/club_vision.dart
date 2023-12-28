@@ -19,10 +19,10 @@ class _ClubVisionState extends State<ClubVision> {
         title: const Text('رؤية نادي الصقر'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+            child: Image.asset('assets/1703776859895.png'),
           ),
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -52,10 +52,9 @@ class _ClubVisionState extends State<ClubVision> {
                     context: context,
                     fullSize: true,
 
-                    gcHieght:MediaQuery.of(context).size.width * 0.9,
+                    gcHieght: MediaQuery.of(context).size.width * 0.9,
                     gcWidth: MediaQuery.of(context).size.width * 0.9,
                     child: const Column(
-                
                       // padding: const EdgeInsets.symmetric(
                       //     vertical: 20.0, horizontal: 30.0),
                       children: [
@@ -67,14 +66,14 @@ class _ClubVisionState extends State<ClubVision> {
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 61, 122, 63),
+                                color: Color.fromRGBO(131, 40, 117, 1.000),
                               ),
                             ),
                           ),
                         ),
-                
+
                         SizedBox(height: 10.0),
-                
+
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
@@ -111,19 +110,19 @@ class _ClubVisionState extends State<ClubVision> {
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 122, 63),
+                              color: Color.fromRGBO(131, 40, 117, 1.000),
                             ),
                           ),
                         ),
-                
+
                         SizedBox(height: 10.0),
-                
+
                         Text(
                           'أن نكون نموذجا متميزا للرياضة السعودية من خلال التطوير المؤسسي , وتطوير المنشآت والمرافق , وضمان الاستدامة المالية وتعزيز دور النادي المجتمعي , لتحقيق طموحات الشركاء.',
                           textAlign: TextAlign.right,
                           style: TextStyle(fontSize: 16.0),
                         ),
-                
+
                         SizedBox(
                           height: 40.0,
                           width: 20.0,
@@ -149,7 +148,7 @@ class _ClubVisionState extends State<ClubVision> {
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 61, 122, 63),
+                                color: Color.fromRGBO(131, 40, 117, 1.000),
                               ),
                             ),
                           ),

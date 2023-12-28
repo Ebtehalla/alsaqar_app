@@ -23,7 +23,7 @@ class _FooterState extends State<Footer> {
           height: MediaQuery.of(context).size.shortestSide * 0.2,
           child: ClipOval(
             child: Image.asset(
-              'assets/Alsaaqerclub.jpg',
+              'assets/1703776859895.png',
               height: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.cover,
             ),
@@ -125,12 +125,12 @@ class _FooterState extends State<Footer> {
           child: Center(
             child: Container(
               alignment: Alignment.centerRight,
-              color: const Color.fromARGB(255, 86, 45, 93),
+              color: const Color.fromRGBO(131, 40, 117, 1.000),
               child: const Text(
                 'جميع الحقوق محفوظة لنادي الصقر 2023 صمم بواسطة بانورما القصيم',
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color.fromARGB(255, 250, 248, 248),
+                  color: Color.fromRGBO(215, 172, 78, 1.000),
                 ),
               ),
             ),

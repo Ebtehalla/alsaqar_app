@@ -78,10 +78,10 @@ class _PdfScreenState extends State<PdfScreen> {
           title: Text(widget.title),
           actions: [
             ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
+              child: Image.asset('assets/new logoo.png'),
             )
           ],
-          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+          backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
           centerTitle: true,
           toolbarHeight: 60,
           shape: const RoundedRectangleBorder(

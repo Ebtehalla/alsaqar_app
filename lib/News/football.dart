@@ -46,7 +46,7 @@ class _FootballState extends State<Football> {
           const SizedBox(height: 18.0),
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 49, 140, 41),
+              color: const Color.fromRGBO(215, 172, 78, 1.000),
               borderRadius: BorderRadius.circular(60),
               boxShadow: [
                 BoxShadow(

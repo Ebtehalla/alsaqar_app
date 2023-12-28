@@ -70,155 +70,154 @@ class _EmploeeykeyState extends State<Emploeeykey> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        drawer: MyDrawer(),
-        appBar: AppBar(
-          title: const Text(' الوظائف  '),
-          actions: [
-            ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
-            )
-          ],
-          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
-          centerTitle: true,
-          toolbarHeight: 60,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
-            ),
+    return Scaffold(
+      drawer: MyDrawer(),
+      appBar: AppBar(
+        title: const Text(' الوظائف  '),
+        actions: [
+          ClipOval(
+            child: Image.asset('assets/1703776859895.png'),
+          )
+        ],
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
+        centerTitle: true,
+        toolbarHeight: 60,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
           ),
         ),
-        body: SingleChildScrollView(
-          // Wrap the body content with SingleChildScrollView
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Form(
-                key: emploeeyFormKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      ' وظائف شاغرة',
-                      style: TextStyle(fontSize: 24),
+      ),
+      body: SingleChildScrollView(
+        // Wrap the body content with SingleChildScrollView
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Form(
+              key: emploeeyFormKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    ' وظائف شاغرة',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  const SizedBox(height: 20),
+                  Image.asset(
+                    'assets/emploe.jpg', // Replace with the path to your image
+                    width: 500,
+                    height: 400,
+                  ),
+                  const SizedBox(height: 40),
+                  TextFormField(
+                    controller: fullNameController,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: 'الأسم الثلاثي',
                     ),
-                    const SizedBox(height: 20),
-                    Image.asset(
-                      'assets/emploe.jpg', // Replace with the path to your image
-                      width: 500,
-                      height: 400,
+                  ),
+                  TextFormField(
+                    controller: idNumberController,
+                    keyboardType: TextInputType.number,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: 'رقم الهوية ',
                     ),
-                    const SizedBox(height: 40),
-                    TextFormField(
-                      controller: fullNameController,
-                      validator: Validator.validateName,
-                      decoration: const InputDecoration(
-                        labelText: 'الأسم الثلاثي',
-                      ),
+                  ),
+                  TextFormField(
+                    controller: phoneNumberController,
+                    keyboardType: TextInputType.number,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: ' رقم الجوال',
                     ),
-                    TextFormField(
-                      controller: idNumberController,
-                      keyboardType: TextInputType.number, 
-                      validator: Validator.validateName,
-                      decoration: const InputDecoration(
-                        labelText: 'رقم الهوية ',
-                      ),
+                  ),
+                  TextFormField(
+                    controller: ageController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    validator: (value) {
+                      if (value?.isEmpty ?? false) {
+                        return "لا يجب ان يكون العمر فارغا";
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: ' العمر',
                     ),
-                    TextFormField(
-                      controller: phoneNumberController,
-                      keyboardType: TextInputType.number,
-                      validator: Validator.validateName,
-                      decoration: const InputDecoration(
-                        labelText: ' رقم الجوال',
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ageController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      validator: (value) {
-                        if (value?.isEmpty ?? false) {
-                          return "لا يجب ان يكون العمر فارغا";
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                        labelText: ' العمر',
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (emploeeyFormKey.currentState!.validate() &&
-                            cvFile != null) {
-                          emploeeykey(
-                            name: fullNameController.text,
-                            email: idNumberController.text,
-                            phone: phoneNumberController.text,
-                            age: ageController.text,
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                            255, 55, 122, 58), // Set the desired color here
-                        shape: const StadiumBorder(),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                            horizontal: 20), // Adjust the padding here
-                        textStyle: const TextStyle(
-                            fontSize: 18), // Adjust the font size here
-                      ),
-                      child: const Text('إرسال'),
-                    ),
-                    const SizedBox(height: 20),
-                    TextButton(
-                      onPressed: () async {
-                        FilePickerResult? result =
-                            await FilePicker.platform.pickFiles(
-                          type: FileType.custom,
-                          allowedExtensions: ['pdf', 'doc', 'docx'],
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (emploeeyFormKey.currentState!.validate() &&
+                          cvFile != null) {
+                        emploeeykey(
+                          name: fullNameController.text,
+                          email: idNumberController.text,
+                          phone: phoneNumberController.text,
+                          age: ageController.text,
                         );
-                        if (result != null) {
-                          PlatformFile file = result.files.first;
-                          String filePath = file.path!;
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(
+                          131, 40, 117, 1.000), // Set the desired color here
+                      shape: const StadiumBorder(),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 20), // Adjust the padding here
+                      textStyle: const TextStyle(
+                          fontSize: 18), // Adjust the font size here
+                    ),
+                    child: const Text('إرسال'),
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () async {
+                      FilePickerResult? result =
+                          await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf', 'doc', 'docx'],
+                      );
+                      if (result != null) {
+                        PlatformFile file = result.files.first;
+                        String filePath = file.path!;
 
-                          setState(() {
-                            cvFile = File(filePath);
-                          });
-                        } else {
-                          // User canceled the file picking
-                          print('File picking canceled.');
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(
-                            8.0), // Adjust the padding value as needed
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              8.0), // Adjust the border radius as needed
-                          child: const Text(
-                            'إضافة ملف السيرة الذاتية',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              backgroundColor: Color.fromARGB(255, 24, 90, 57),
-                              fontSize: 16.0,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
+                        setState(() {
+                          cvFile = File(filePath);
+                        });
+                      } else {
+                        // User canceled the file picking
+                        print('File picking canceled.');
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                          8.0), // Adjust the padding value as needed
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            8.0), // Adjust the border radius as needed
+                        child: const Text(
+                          'إضافة ملف السيرة الذاتية',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            backgroundColor:
+                                Color.fromRGBO(215, 172, 78, 1.000),
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
-      
+      ),
     );
   }
 }

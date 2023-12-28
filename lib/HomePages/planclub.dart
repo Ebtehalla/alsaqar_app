@@ -31,10 +31,10 @@ class _PlanClubState extends State<PlanClub> {
           title: const Text(''),
           actions: [
             ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
+              child: Image.asset('assets/1703776859895.png'),
             )
           ],
-          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+          backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
           centerTitle: true,
           toolbarHeight: 60,
           shape: const RoundedRectangleBorder(
@@ -71,7 +71,7 @@ class _PlanClubState extends State<PlanClub> {
                     ),
                     child: const Center(
                       child: Text(
-                        'وثيقة الخطة الإستراتيجية للنادي (2022-2027)',
+                        'وثيقة الخطة الإستراتيجية للنادي (2023-2027)',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

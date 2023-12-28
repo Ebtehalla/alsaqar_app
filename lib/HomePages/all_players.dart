@@ -19,7 +19,7 @@ class _AllPlayersState extends State<AllPlayers> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('اللاعبين'),
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(

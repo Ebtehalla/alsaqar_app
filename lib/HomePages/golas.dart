@@ -17,13 +17,13 @@ class _GoalsclubState extends State<Goalsclub> {
     return Scaffold(
       drawer: MyDrawer(),
       appBar: AppBar(
-        title: const Text('الاهداف الاستراتيجية'),
         actions: [
           ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
-          ),
+            child: Image.asset('assets/1703776859895.png'),
+          )
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        title: const Text(' الاهداف الاستراتيجية ومبادراتها'),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -54,7 +54,7 @@ class _GoalsclubState extends State<Goalsclub> {
                     fullSize: true,
                     gcHieght: MediaQuery.of(context).size.width * 0.9,
                     gcWidth: MediaQuery.of(context).size.width * 0.9,
-                    child:  ListView(
+                    child: ListView(
                       // padding: const EdgeInsets.symmetric(
                       //     vertical: 20.0, horizontal: 30.0),
                       children: const [
@@ -68,20 +68,20 @@ class _GoalsclubState extends State<Goalsclub> {
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 61, 122, 63),
+                                    color: Color.fromRGBO(131, 40, 117, 1.000),
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                
+
                         SizedBox(height: 10.0),
-                
+
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
-                            'يسعى النادي إلى حوكمة كافة الأعمال الإدارية بما يتماشى مع اللوائح والأنظمة والاجراءات المعتمدة من وزارة الرياضة,وتحويل المعاملات الورقية الى معاملات إلكترونية من خلال الحوكمة الرقمية وتوفير بنية تحتية ومرافق متكاملة لكافة اصحاب المصلحة الداخلية والخارجية .',
+                            'يسعى النادي إلى حوكمة كافة الأعمال الإدارية بما يتماشى مع اللوائح والأنظمة والاجراءات المعتمدة من وزارة الرياضة,وتحويل المعاملات الورقية الى معاملات إلكترونية من خلال الحوكمة الرقمية وتوفير بنية تحتية ومرافق متكاملة لكافة اصحاب المصلحة الداخليين والخارجيين .',
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
@@ -92,7 +92,7 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 122, 63),
+                              color: Color.fromRGBO(131, 40, 117, 1.000),
                             ),
                           ),
                         ),
@@ -154,7 +154,7 @@ class _GoalsclubState extends State<Goalsclub> {
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 61, 122, 63),
+                                color: Color.fromRGBO(131, 40, 117, 1.000),
                               ),
                             ),
                           ),
@@ -163,7 +163,7 @@ class _GoalsclubState extends State<Goalsclub> {
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
-                            ' يسعى النادي لتنمية موارده المالية لتحقيق تطلعاته في المجالين الرياضي وغير الرياضي من خلال رفع استثماراته الذاتية وزيادة عدد الرعاة والمعلنين ,والإدارة الفاعلة لهذة الموارد المالية وتخصيصها وفقا لأولويات لتحقيق كفاءة الإنفاق.',
+                            ' يسعى النادي لتنمية موارده المالية لتحقيق تطلعاته في المجالين الرياضي وغير الرياضي من خلال رفع استثماراته الذاتية وزيادة عدد الرعاة والمعلنين ,والإدارة الفاعلة لهذة الموارد المالية وتخصيصها وفقا لأولويات النادي لتحقيق كفاءة الإنفاق.',
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
@@ -174,7 +174,7 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 122, 63),
+                              color: Color.fromRGBO(131, 40, 117, 1.000),
                             ),
                           ),
                         ),
@@ -209,21 +209,15 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
+
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
-                            '4- استقطاب الرعاة والمعلنين والداعمين',
+                            '4-تحسين كفاءة الإنفاق ',
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: Text(
-                            '5-تحسين كفاءة الإنفاق ',
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                
+
                         SizedBox(height: 40.0, width: 20.0),
                         SizedBox(
                             height:
@@ -246,7 +240,7 @@ class _GoalsclubState extends State<Goalsclub> {
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 61, 122, 63),
+                                color: Color.fromRGBO(131, 40, 117, 1.000),
                               ),
                             ),
                           ),
@@ -255,7 +249,7 @@ class _GoalsclubState extends State<Goalsclub> {
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
-                            'يسعى النادي لبناء علاقات مميزة مع الأطراف ذوي العلاقة بأنشطة النادي الرياضية وغير الرياضية وعلى رأسهم وزارة الرياضية والاتحادات ,وشركات الرعاية والإعلان , ومنسوبو النادي من إلاداريين واللاعبين زالمدربين , وجماهير النادي, وكافة النادي , وكافة المصلحة الأخرون.',
+                            'يسعى النادي لبناء علاقات مميزة مع الأطراف ذوي العلاقة بأنشطة النادي الرياضية وغير الرياضية وعلى رأسهم وزارة الرياضية والاتحادات ,وشركات الرعاية والإعلان , ومنسوبو النادي من إلاداريين واللاعبين والمدربين , وجماهير النادي, وكافة النادي , وكافة اصحاب المصلحة الأخرون.',
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
@@ -266,7 +260,7 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 122, 63),
+                              color: Color.fromRGBO(131, 40, 117, 1.000),
                             ),
                           ),
                         ),
@@ -304,7 +298,7 @@ class _GoalsclubState extends State<Goalsclub> {
                         Directionality(
                           textDirection: TextDirection.rtl,
                           child: Text(
-                            '4-  تنويع الفعاليات الترفيهية للجماهير',
+                            '4- تنويع الفعاليات الترفيهية',
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
@@ -315,7 +309,20 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
-                
+                        Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: Text(
+                            '6-تعزيز المشاركة المجتمعية  ',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: Text(
+                            '7-زيادة الحضور الجماهيري للمباريات ',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
                         SizedBox(height: 40.0, width: 20.0),
                         SizedBox(
                             height:
@@ -339,7 +346,7 @@ class _GoalsclubState extends State<Goalsclub> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 61, 122, 63),
+                                  color: Color.fromRGBO(131, 40, 117, 1.000),
                                 ),
                               ),
                             ),
@@ -360,7 +367,7 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 122, 63),
+                              color: Color.fromRGBO(131, 40, 117, 1.000),
                             ),
                           ),
                         ),
@@ -416,9 +423,7 @@ class _GoalsclubState extends State<Goalsclub> {
                             style: TextStyle(fontSize: 16.0),
                           ),
                         ),
-                        SizedBox(
-                            height:
-                                28.0),
+                        SizedBox(height: 28.0),
                       ],
                     ),
                   ),

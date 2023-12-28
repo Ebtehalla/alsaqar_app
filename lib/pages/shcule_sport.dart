@@ -43,11 +43,11 @@ class _SportclanderState extends State<Sportclander> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
+              child: Image.asset('assets/1703776859895.png'),
             ),
           ),
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -99,9 +99,9 @@ class _SportclanderState extends State<Sportclander> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/Alsaaqerclub.jpg',
-                              width: 150,
-                              height: 150,
+                              'assets/new logoo.png',
+                              width: 160,
+                              height: 160,
                             ),
                             const SizedBox(height: 16),
                             const Text(
@@ -153,7 +153,7 @@ class _SportclanderState extends State<Sportclander> {
                             width: double.infinity,
                             height: 40,
                             decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 24, 90, 57),
+                              color: const Color.fromRGBO(215, 172, 78, 1.000),
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
