@@ -1,10 +1,13 @@
 import 'package:alsagr_app/data_sources/news_api.dart';
-import 'package:alsagr_app/models/news_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../components/network_image.dart';
+import '../models/news_model.dart';
 
 class ImageHeadr extends StatefulWidget {
-  const ImageHeadr({Key? key}) : super(key: key);
+  const ImageHeadr({super.key});
 
   @override
   State<ImageHeadr> createState() => _ImageHeadrState();
@@ -14,24 +17,18 @@ class _ImageHeadrState extends State<ImageHeadr> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<NewsModel>?>(
+      future: getNews(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          print(snapshot.data);
-          final news = snapshot.data;
+          var news = snapshot.data;
           return CarouselSlider.builder(
-            itemCount: news?.length ?? 0,
+            itemCount: news?.length,
             itemBuilder: (context, index, realIndex) {
-              // ignore: unused_local_variable
-              String currentImage = news?[index].imageUrl ?? "";
-              return Image.network(
-                news?[index].imageUrl ?? "",
-                width: 900, // Set the desired width
-                height: 400, // Set the desired height
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.network(
-                      "https://alsaaqerclub.sa/wp-content/uploads/2022/12/-e1670162685443-128x128.png");
-                },
+              var item = news?[index];
+              return AppCashedImage(
+                imageUrl: item?.img ?? "",
+                fit: BoxFit.cover,
+                width: context.width,
               );
             },
             options: CarouselOptions(
@@ -46,7 +43,6 @@ class _ImageHeadrState extends State<ImageHeadr> {
           );
         }
       },
-      future: getNews(),
     );
   }
 }

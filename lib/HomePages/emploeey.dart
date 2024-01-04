@@ -1,46 +1,101 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:io';
+
 import 'package:alsagr_app/components/drawer.dart';
+import 'package:alsagr_app/data_sources/emploeey_apis.dart';
+import 'package:alsagr_app/pages/homepage.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
 
-class emploeeykey extends StatefulWidget {
-  const emploeeykey({super.key});
+import '../core/extensions/validator.dart';
+import '../firebase_helper.dart';
+import '../models/emploeey_model.dart';
+
+class Emploeeykey extends StatefulWidget {
+  const Emploeeykey({super.key});
 
   @override
-  State<emploeeykey> createState() => _emploeeykeyState();
+  State<Emploeeykey> createState() => _EmploeeykeyState();
 }
 
-class _emploeeykeyState extends State<emploeeykey> {
+class _EmploeeykeyState extends State<Emploeeykey> {
+  var fullNameController = TextEditingController();
+  var idNumberController = TextEditingController();
+  var phoneNumberController = TextEditingController();
+  var ageController = TextEditingController();
+  File? cvFile;
+  GlobalKey<FormState> emploeeyFormKey = GlobalKey<FormState>();
+  Future emploeeykey({
+    required String name,
+    required String email,
+    required String phone,
+    required String age,
+  }) async {
+    BotToast.showLoading();
+    var imageUrl = await FirebaseStorageHelper.uploadFileToFirebaseStorage(
+        file: cvFile!, uid: name, collection: email);
+    bool? res = await EmploeeyApis.addMessageToFirestore(
+      EmploeeyModel(
+        email: email,
+        name: name,
+        phone: phone,
+        age: age,
+        cv: imageUrl ?? "",
+      ),
+    );
+    if (res) {
+      BotToast.closeAllLoading();
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(
+              title: 'نادي الصقر',
+              imagePath: '',
+            ),
+          ));
+      BotToast.showText(
+        text: "تم إرسال رسالتك بنجاح سيتم التواصل معك قريبا",
+      );
+    } else {
+      BotToast.closeAllLoading();
+
+      BotToast.showText(
+        text: "حدث خطأ اثناء إرسال رسالتك حاول مرة اخري",
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        drawer: MyDrawer(),
-        appBar: AppBar(
-          title: const Text(' الوظائف  '),
-          actions: [
-            ClipOval(
-              child: Image.asset('assets/Alsaaqerclub.jpg'),
-            )
-          ],
-          backgroundColor: const Color.fromARGB(255, 86, 45, 93),
-          centerTitle: true,
-          toolbarHeight: 60,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
-            ),
+    return Scaffold(
+      drawer: MyDrawer(),
+      appBar: AppBar(
+        title: const Text(' الوظائف  '),
+        actions: [
+          ClipOval(
+            child: Image.asset('assets/1703776859895.png'),
+          )
+        ],
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
+        centerTitle: true,
+        toolbarHeight: 60,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
           ),
         ),
-        body: SingleChildScrollView(
-          // Wrap the body content with SingleChildScrollView
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
+      ),
+      body: SingleChildScrollView(
+        // Wrap the body content with SingleChildScrollView
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Form(
+              key: emploeeyFormKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -48,39 +103,68 @@ class _emploeeykeyState extends State<emploeeykey> {
                     ' وظائف شاغرة',
                     style: TextStyle(fontSize: 24),
                   ),
-
-                  // Image.asset(
-                  //   'assets/emploe.jpg', // Replace with the path to your image
-                  //   width: 500,
-                  //   height: 400,
-                  // ),
+                  const SizedBox(height: 20),
+                  Image.asset(
+                    'assets/emploe.jpg', // Replace with the path to your image
+                    width: 500,
+                    height: 400,
+                  ),
                   const SizedBox(height: 40),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'الاسم الثلاثي',
+                  TextFormField(
+                    controller: fullNameController,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: 'الأسم الثلاثي',
                     ),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'رقم الهوية',
+                  TextFormField(
+                    controller: idNumberController,
+                    keyboardType: TextInputType.number,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: 'رقم الهوية ',
                     ),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'رقم الجوال',
+                  TextFormField(
+                    controller: phoneNumberController,
+                    keyboardType: TextInputType.number,
+                    validator: Validator.validateName,
+                    decoration: const InputDecoration(
+                      labelText: ' رقم الجوال',
                     ),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'العمر',
+                  TextFormField(
+                    controller: ageController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    validator: (value) {
+                      if (value?.isEmpty ?? false) {
+                        return "لا يجب ان يكون العمر فارغا";
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: ' العمر',
                     ),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (emploeeyFormKey.currentState!.validate() &&
+                          cvFile != null) {
+                        emploeeykey(
+                          name: fullNameController.text,
+                          email: idNumberController.text,
+                          phone: phoneNumberController.text,
+                          age: ageController.text,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(
-                          255, 55, 122, 58), // Set the desired color here
+                      backgroundColor: const Color.fromRGBO(
+                          131, 40, 117, 1.000), // Set the desired color here
                       shape: const StadiumBorder(),
                       padding: const EdgeInsets.symmetric(
                           vertical: 16,
@@ -98,12 +182,13 @@ class _emploeeykeyState extends State<emploeeykey> {
                         type: FileType.custom,
                         allowedExtensions: ['pdf', 'doc', 'docx'],
                       );
-
                       if (result != null) {
                         PlatformFile file = result.files.first;
                         String filePath = file.path!;
-                        // Add your custom code here to handle the selected resume file
-                        print('Selected resume file: $filePath');
+
+                        setState(() {
+                          cvFile = File(filePath);
+                        });
                       } else {
                         // User canceled the file picking
                         print('File picking canceled.');
@@ -119,8 +204,8 @@ class _emploeeykeyState extends State<emploeeykey> {
                           'إضافة ملف السيرة الذاتية',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            backgroundColor: Color.fromARGB(255, 24, 90, 57),
-                            fontSize: 16.0,
+                            backgroundColor:
+                                Color.fromRGBO(215, 172, 78, 1.000),
                             color: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),

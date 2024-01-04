@@ -31,13 +31,18 @@ class _HomePageState extends State<HomePage> {
       drawer: MyDrawer(keys: keys),
       appBar: AppBar(
         title: const Text("نادي الصقر"),
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25)),
         ),
+        actions: [
+          ClipOval(
+            child: Image.asset('assets/1703776859895.png'),
+          )
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -65,13 +70,11 @@ class _HomePageState extends State<HomePage> {
                   const PlayersCard(),
                   Padding(
                     padding: const EdgeInsets.only(
-                        bottom:
-                            5.0), // Change the value to adjust the padding size
+                      bottom: 5.0,
+                    ), // Change the value to adjust the padding size
                     child: Center(
                       child: Container(
                         alignment: Alignment.centerRight,
-                        color: Color.fromARGB(
-                            255, 49, 134, 55), // تحديد لون النص ه
                         child: const Footer(),
                       ),
                     ),

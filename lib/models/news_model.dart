@@ -3,49 +3,48 @@ import 'dart:convert';
 
 class NewsModel {
   final String? title;
-  final String? imageUrl;
-
+  final String? img;
   NewsModel({
     this.title,
-    this.imageUrl,
+    this.img,
   });
 
   NewsModel copyWith({
     String? title,
-    String? imageUrl,
+    String? img,
   }) {
     return NewsModel(
       title: title ?? this.title,
-      imageUrl: imageUrl ?? this.imageUrl,
+      img: img ?? this.img,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'imageUrl': imageUrl,
+      'img': img,
     };
   }
 
   factory NewsModel.fromMap(Map<String, dynamic> map) {
     return NewsModel(
       title: map['title'] != null ? map['title'] as String : null,
-      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
+      img: map['img'] != null ? map['img'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   @override
-  String toString() => 'NewsModel(title: $title, imageUrl: $imageUrl)';
+  String toString() => 'NewsModel(title: $title, img: $img)';
 
   @override
   bool operator ==(covariant NewsModel other) {
     if (identical(this, other)) return true;
 
-    return other.title == title && other.imageUrl == imageUrl;
+    return other.title == title && other.img == img;
   }
 
   @override
-  int get hashCode => title.hashCode ^ imageUrl.hashCode;
+  int get hashCode => title.hashCode ^ img.hashCode;
 }

@@ -2,12 +2,15 @@ import 'package:alsagr_app/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class hakll extends StatefulWidget {
+class Hakll extends StatefulWidget {
+  const Hakll({super.key});
+
   @override
-  _hakllState createState() => _hakllState();
+  // ignore: library_private_types_in_public_api
+  _HakllState createState() => _HakllState();
 }
 
-class _hakllState extends State<hakll> {
+class _HakllState extends State<Hakll> {
   late Future<Widget> imageFromFirestore;
 
   @override
@@ -33,11 +36,14 @@ class _hakllState extends State<hakll> {
       appBar: AppBar(
         title: const Text('الهيكل التنظيمي'),
         actions: [
-          ClipOval(
-            child: Image.asset('assets/Alsaaqerclub.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipOval(
+              child: Image.asset('assets/1703776859895.png'),
+            ),
           )
         ],
-        backgroundColor: const Color.fromARGB(255, 86, 45, 93),
+        backgroundColor: const Color.fromRGBO(131, 40, 117, 1.000),
         centerTitle: true,
         toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
@@ -52,7 +58,7 @@ class _hakllState extends State<hakll> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
